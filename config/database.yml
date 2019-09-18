@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
 production:
-  <<: *default
-  database: partizer_production
-  username: partizer
-  password: <%= ENV['PARTIZER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
