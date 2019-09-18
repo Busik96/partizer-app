@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 ruby '2.6.4'
 
+gem 'activeadmin'
+gem 'devise'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
