@@ -1,31 +1,28 @@
-  %h2
-    Edytuj #{resource_name.to_s.humanize}
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :first_name, required: true, autofocus: true
-      = f.input :last_name, required: true, autofocus: true
-      = f.input :phone_number, required: true, autofocus: true
-      = f.input :email, required: true, autofocus: true
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %p
-          Obecnie czekamy na potwierdzenie: #{resource.unconfirmed_email}
-      = f.input :password,
-        hint: "pozostaw to pole puste, jeśli nie chcesz go zmieniać",
-        required: false,
-        input_html: { autocomplete: "new-password" }
-      -#
-      = f.input :password_confirmation,
-        required: false,
-        input_html: { autocomplete: "new-password" }
-      -#
-      = f.input :current_password,
-        hint: "potrzebujemy twojego aktualnego hasła, aby potwierdzić zmiany",
-        required: true,
-        input_html: { autocomplete: "current-password" }
-    .form-actions
-      = f.button :submit, "Zaktualizuj"
-  %h3 Anuluj moje konto:
-  %p
-    Niezadowolony? #{link_to "Anuluj moje konto", registration_path(resource_name), data: { confirm: "Jesteś pewny/pewna?" }, method: :delete}
-  = link_to "Powrót", :back
+%h2 Edytuj #{resource_name.to_s.humanize}
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :first_name, required: true, autofocus: true
+    = f.input :last_name, required: true, autofocus: true
+    = f.input :phone_number, required: true, autofocus: true
+    = f.input :email, required: true, autofocus: true
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %p
+        Obecnie czekamy na potwierdzenie: #{resource.unconfirmed_email}
+    = f.input :password,
+      hint: "pozostaw to pole puste, jeśli nie chcesz go zmieniać",
+      required: false,
+      input_html: { autocomplete: "new-password" }
+    = f.input :password_confirmation,
+      required: false,
+      input_html: { autocomplete: "new-password" }
+    = f.input :current_password,
+      hint: "potrzebujemy twojego aktualnego hasła, aby potwierdzić zmiany",
+      required: true,
+      input_html: { autocomplete: "current-password" }
+  .form-actions
+    = f.button :submit, "Zaktualizuj"
+%h3 Anuluj moje konto:
+%p
+  Niezadowolony? #{link_to "Anuluj moje konto", registration_path(resource_name), data: { confirm: "Jesteś pewny/pewna?" }, method: :delete, class: 'btn btn-small btn-dark'}
+= link_to "Powrót", :back
