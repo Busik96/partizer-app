@@ -38,6 +38,9 @@ Metrics/LineLength:
   Exclude:
     - 'db/migrate/*'
 
+Metric/MethodLength:
+  Max: 15
+
 # Rubocop do not allow to use old syntax for rack::test methods
 # https://github.com/bbatsov/rubocop/issues/3675
 Rails/HttpPositionalArguments:
