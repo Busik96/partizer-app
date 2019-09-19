@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root
   end
 
-  root "home#index"
+  root 'home#index'
 end
