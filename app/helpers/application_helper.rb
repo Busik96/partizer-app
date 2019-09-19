@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  FLASH_TO_BOOTSTRAP_CLASS = {
+    success: 'alert-success',
+    error: 'alert-danger',
+    alert: 'alert-warning',
+    notice: 'alert-info'
+  }.freeze
+
   def bootstrap_class_for_flash(flash_type)
-    case flash_type
-    when 'success'
-      'alert-success'
-    when 'error'
-      'alert-danger'
-    when 'alert'
-      'alert-warning'
-    when 'notice'
-      'alert-info'
+    if FLASH_TO_BOOTSTRAP_CLASS.key?(flash_type)
+      FLASH_TO_BOOTSTRAP_CLASS[flash_type]
     else
       flash_type.to_s
     end
