@@ -1,0 +1,10 @@
+pl:
+  simple_form:
+    labels:
+      defaults:
+        first_name: Imię
+        last_name: Nazwisko
+        phone_number: Numer telefonu
+        password: Hasło
+        password_confirmation: Powtórz hasło
+        remember_me: Zapamiętaj mnie
