@@ -10,6 +10,7 @@
   %header
     = render 'layouts/header'
   %body.d-flex.flex-column
+    = render partial: 'layouts/flash', flash: flash
     = yield
   %footer
     = render 'layouts/footer'
