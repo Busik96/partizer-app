@@ -1,15 +1,41 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo01", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo01", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarTogglerDemo01.collapse.navbar-collapse
-    = link_to 'PARTIZER', root_path, class: 'navbar-brand'
-    %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-      %li.nav-item
-        = link_to 'Jak to działa?', root_path, class: 'nav-link'
-      %li.nav-item
-        = link_to 'Katalog firm', root_path, class: 'nav-link'
-      %li.nav-item
-        = link_to 'Pomoc', root_path, class: 'nav-link'
-    %ul.navbar-nav.my-2.my-lg-0
-      %li.nav-item
-        = link_to 'Zaloguj się', new_user_session_path, class: 'nav-link active'
+- if user_signed_in?
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo01", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo01", "data-toggle" => "collapse", type: "button"}
+      %span.navbar-toggler-icon
+    #navbarTogglerDemo01.collapse.navbar-collapse
+      = link_to 'PARTIZER', root_path, class: 'navbar-brand'
+      %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+        %li.nav-item
+          = link_to 'Jak to działa?', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Katalog firm', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Pomoc', root_path, class: 'nav-link'
+      %ul.navbar-nav.my-2.my-lg-0
+        %li.nav-item
+          = link_to 'Zorganizuj imprezę', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Dodaj firmę', root_path, class: 'nav-link'
+        %li.nav-item.dropdown.dropleft.active
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: '#', role: 'button'}
+            Konto
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            = link_to 'Edytuj konto', edit_user_registration_path, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Wyloguj się', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+- else
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo01", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo01", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarTogglerDemo01.collapse.navbar-collapse
+      = link_to 'PARTIZER', root_path, class: 'navbar-brand'
+      %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+        %li.nav-item
+          = link_to 'Jak to działa?', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Katalog firm', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Pomoc', root_path, class: 'nav-link'
+      %ul.navbar-nav.my-2.my-lg-0
+        %li.nav-item
+          = link_to 'Zaloguj się', new_user_session_path, class: 'nav-link active'
