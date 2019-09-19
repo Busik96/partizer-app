@@ -6,3 +6,6 @@
 @import './../stylesheets/header';
 @import './../stylesheets/background_images';
 @import './../stylesheets/helpers';
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
