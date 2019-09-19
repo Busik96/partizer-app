@@ -1,0 +1,20 @@
+#page-content
+  .container.pt-5
+    .row
+      .col-md-6.text-center.center-content
+        .card{style: 'width: 25rem;'}
+          = image_pack_tag 'cookies.png', height: 250, alt: 'Edit Entry',
+            class: 'img.card-img-top'
+          .card-body
+            %h5.card-title Impreza?
+            %p.card-text To my zadbamy o to by organizowana przez Ciebie impreza była niezapomniana!
+            %a.btn.btn-primary{href: '#'} Zorganizuj imprezę!
+      .col-md-6.text-center.center-content
+        .card{:style => 'width: 25rem;'}
+          = image_pack_tag 'city.png', height: 250, alt: 'Edit Entry',
+            class: "img.card-img-top"
+          .card-body
+            %h5.card-title Firma?
+            %p.card-text U nas możesz założyć swoją firmową wizytówkę i pozyskać nowych klientów!
+            %a.btn.btn-primary{href: '#'} Zareklamuj się!
+
