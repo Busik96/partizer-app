@@ -11,5 +11,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :companies
+
+  namespace :users do
+    resources :companies
+  end
+
   get '*page', to: 'home#static_page', as: :static_page
 end

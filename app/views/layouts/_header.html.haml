@@ -12,10 +12,14 @@
         %li.nav-item
           = link_to 'Pomoc', root_path, class: 'nav-link'
       %ul.navbar-nav.my-2.my-lg-0
+        -if current_user.companies.exists?
+          %li.nav-item
+            = link_to 'Moje firmy', users_companies_path, class: 'nav-link'
+        -else
+          %li.nav-item
+            = link_to 'Zorganizuj imprezę', root_path, class: 'nav-link'
         %li.nav-item
-          = link_to 'Zorganizuj imprezę', root_path, class: 'nav-link'
-        %li.nav-item
-          = link_to 'Dodaj firmę', root_path, class: 'nav-link'
+          = link_to 'Dodaj imprezę', root_path, class: 'nav-link'
         %li.nav-item.dropdown.dropleft.active
           %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: '#', role: 'button'}
             Konto
