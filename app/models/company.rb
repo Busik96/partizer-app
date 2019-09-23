@@ -19,8 +19,11 @@
 
 class Company < ApplicationRecord
   has_one :address, as: :addressable
+  has_many :company_categories
+  has_many :categories, through: :company_categories
 
   accepts_nested_attributes_for :address
 
   validates :name, presence: true
+  validates :categories, presence: true
 end

@@ -7,6 +7,7 @@ pl:
     address2: Adres 2
     city: Miasto
     zipcode: Kod pocztowy
+    categories: Kategorie
   activerecord:
     errors:
       format: "%{attribute} %{message}"

@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import 'bootstrap'
+import 'select2'
 import './styles.scss'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -16,3 +17,6 @@ import './styles.scss'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+$(document).on('turbolinks:load', () => {
+  $('#company_category_ids').select2({ width: 'auto' })
+})

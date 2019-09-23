@@ -48,6 +48,7 @@ module Users
     def company_params
       params.require(:company).permit(
         :name, :nip, :short_description,
+        category_ids: [],
         address_attributes: %i[id address1 address2 city zipcode phone_number]
       )
     end
