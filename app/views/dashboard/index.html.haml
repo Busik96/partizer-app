@@ -8,7 +8,7 @@
           .card-body
             %h5.card-title Impreza?
             %p.card-text To my zadbamy o to by organizowana przez Ciebie impreza była niezapomniana!
-            %a.btn.btn-dark{href: '#'} Zorganizuj imprezę!
+            = link_to 'Zorganizuj imprezę!', '', class: 'btn btn-dark'
       .col-md-6.text-center.center-content
         .card{:style => 'width: 25rem;'}
           = image_pack_tag 'city.png', height: 250, alt: 'Edit Entry',
@@ -16,5 +16,5 @@
           .card-body
             %h5.card-title Firma?
             %p.card-text U nas możesz założyć swoją firmową wizytówkę i pozyskać nowych klientów!
-            %a.btn.btn-dark{href: '#'} Zareklamuj się!
+            = link_to 'Załóż firmę!', new_users_company_path, class: 'btn btn-dark'
 

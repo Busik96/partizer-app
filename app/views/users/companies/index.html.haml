@@ -1,0 +1,37 @@
+#page-content
+  .container.center-content
+    .col-12.pt-5
+      - if current_user.companies.exists?
+        %h3.display-4
+          Moje formy:
+        .lead
+          %table.table
+            %thead.thead-dark
+              %tr
+                %th{scope: 'col'} #
+                %th{scope: 'col'} Nazwa:
+                %th{scope: 'col'} NIP:
+                %th{scope: 'col'} Krótki opis:
+                %th{scope: 'col'}
+            - @companies.each do |companies|
+              %tbody
+                %tr
+                  %th{scope: 'col'}= companies.id
+                  %td= companies.name
+                  %td= companies.nip
+                  %td= companies.short_description
+                  %td
+                    = link_to 'Edytuj', edit_users_company_path(companies), class: 'btn btn-dark'
+                    = link_to 'Usuń', users_company_path(companies), method: :delete,
+                    class: 'btn btn-dark', data: { confirm: 'Czy na pewno?' }
+      - else
+        .center-page.text-center
+          %h3 Nie posiadasz żadnej założonej firmy! Oczywiście możesz to zmienić:
+          =link_to 'Załóż firmę', new_users_company_path, class: 'btn btn-dark'
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+#page-content
+  .container-fluid
+    .row
+      .col-12.center-content
+        .p-4
+          %h2 Edytuj firmę:
+          = simple_form_for(@company, url: users_company_path(@company)) do |f|
+            .form-inputs
+              .row
+                .col-12.col-md-6
+                  = f.input :name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: 'Nazwa' }
+                .col-12.col-md-6
+                  = f.input :nip,
+                    required: false,
+                    input_html: { autocomplete: 'NIP' }
+              .row
+                .col-12
+                  = f.input :short_description,
+                    required: false,
+                    input_html: { autocomplete: 'Krótki opis' }
+              = f.fields_for :address do |ff|
+                = ff.input :id, as: :hidden
+                .row
+                  .col-12.col-md-6
+                    = ff.input :address1,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: 'Adres 1' }
+                  .col-12.col-md-6
+                    = ff.input :address2,
+                      input_html: { autocomplete: 'Adres 2' }
+                .row
+                  .col-12.col-md-4
+                    = ff.input :city,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: 'Miasto' }
+                  .col-12.col-md-4
+                    = ff.input :zipcode,
+                      required: true,
+                      input_html: { autocomplete: 'Kod pocztowy' }
+                  .col-12.col-md-4
+                    = ff.input :phone_number,
+                      required: false,
+                      input_html: { autocomplete: 'Numer telefonu' }
+            .form-actions
+              = f.button :submit, 'Zaktualizuj dane', class: 'btn btn-large btn-dark'
+              = f.button :submit, 'Usuń firmę', class: 'btn btn-large btn-danger', data: { confirm: 'Czy na pewno?' }
+            = link_to :back do
+              %i.fas.fa-arrow-left
+              Powrót

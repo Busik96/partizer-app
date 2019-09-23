@@ -12,6 +12,6 @@ class HomeController < ApplicationController
   private
 
   def error_render_method
-    raise ActionController::RoutingError.new('Not Found')
+    raise ActionController::RoutingError, 'Not Found'
   end
 end

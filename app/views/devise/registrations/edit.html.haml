@@ -16,23 +16,23 @@
               %p
                 Obecnie czekamy na potwierdzenie: #{resource.unconfirmed_email}
             = f.input :password,
-              hint: "pozostaw to pole puste, jeśli nie chcesz go zmieniać",
+              hint: 'pozostaw to pole puste, jeśli nie chcesz go zmieniać',
               required: false,
-              input_html: { autocomplete: "new-password" }
+              input_html: { autocomplete: 'new-password' }
           .col-12.col-md-6
             = f.input :password_confirmation,
               required: false,
-              input_html: { autocomplete: "new-password" }
+              input_html: { autocomplete: 'new-password' }
       = f.input :current_password,
-        hint: "potrzebujemy twojego aktualnego hasła, aby potwierdzić zmiany",
+        hint: 'potrzebujemy twojego aktualnego hasła, aby potwierdzić zmiany',
         required: true,
-        input_html: { autocomplete: "current-password" }
+        input_html: { autocomplete: 'current-password' }
       .form-actions
-        = f.button :submit, "Zaktualizuj", class: 'btn btn-small btn-dark'
+        = f.button :submit, 'Zaktualizuj', class: 'btn btn-small btn-dark'
     %hr
     %h3 Anuluj moje konto:
     %p
-      Niezadowolony? - #{link_to "Anuluj moje konto", registration_path(resource_name), data: { confirm: "Jesteś pewny/pewna?" }, method: :delete, class: ''}
+      Niezadowolony? - #{link_to 'Anuluj moje konto', registration_path(resource_name), data: { confirm: 'Jesteś pewny/pewna?' }, method: :delete}
     = link_to :back do
       %i.fas.fa-arrow-left
       Powrót

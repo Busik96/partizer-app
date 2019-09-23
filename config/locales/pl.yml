@@ -3,6 +3,10 @@ pl:
     password: Hasło
     password_confirmation: Potwierdzenie hasła
     current_password: Aktualne hasło
+    address1: Adres 1
+    address2: Adres 2
+    city: Miasto
+    zipcode: Kod pocztowy
   activerecord:
     errors:
       format: "%{attribute} %{message}"
@@ -249,6 +253,13 @@ pl:
         password: Hasło
         password_confirmation: Powtórz hasło
         remember_me: Zapamiętaj mnie
+        name: Nazwa
+        nip: NIP
+        short_description: Krótki opis
+        address1: Adres 1
+        address2: Adres 2
+        city: Miasto
+        zipcode: Kod pocztowy
   devise:
     confirmations:
       confirmed: "Twoje konto zostało aktywowane. Zostałeś pomyślnie zalogowany."
