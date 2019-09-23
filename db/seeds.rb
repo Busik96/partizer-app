@@ -10,6 +10,11 @@
 if Rails.env.development?
   AdminUser.create!(email: 'admin@example.com', password: 'password',
                     password_confirmation: 'password')
+
   User.create!(first_name: 'user', last_name: 'example', email: 'user@example.com',
                password: 'password', password_confirmation: 'password')
+
+  %w[DJ Zespół Catering Samochody Dekoracje].each do |category|
+    Category.create(name: category)
+  end
 end

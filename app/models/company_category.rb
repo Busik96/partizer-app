@@ -21,7 +21,6 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 
-
 class CompanyCategory < ApplicationRecord
   belongs_to :company
   belongs_to :category
