@@ -6,9 +6,9 @@ ActiveAdmin.register Company do
   index do
     selectable_column
     id_column
-    column :first_name
-    column :last_name
-    column :phone_number
+    column :name
+    column :nip
+    column :short_description
     actions
   end
 
