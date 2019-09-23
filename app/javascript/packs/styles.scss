@@ -7,5 +7,7 @@
 @import './../stylesheets/background_images';
 @import './../stylesheets/helpers';
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/solid";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~select2/dist/css/select2';
+@import './../stylesheets/select2';

@@ -25,4 +25,5 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :address
 
   validates :name, presence: true
+  validates :categories, presence: true
 end
