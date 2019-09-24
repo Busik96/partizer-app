@@ -11,3 +11,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~select2/dist/css/select2';
 @import './../stylesheets/select2';
+
+html,body {
+  height: 100%;
+}
+
