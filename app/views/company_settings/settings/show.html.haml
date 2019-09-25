@@ -1,0 +1,15 @@
+#page-content
+  .container
+    .row
+      .col-12.col-md-6.text-center.center-content
+        %h3 Twoja aktualna wizytówka w katalogu firm:
+      .col-12.col-md-6.text-center.p-4
+        .card{style: 'width: 18rem;'}
+          = image_pack_tag 'city.png', height: 200, alt: 'Tu miało być foto',
+            class: 'img.card-img-top'
+          .card-body
+            %h5.card-title= @company.name
+            %hr
+            %p.card-text= @company.short_description
+            %p.card-text= @company.address.city
+            = link_to 'Zobacz więcej!', '', class: 'btn btn-dark'

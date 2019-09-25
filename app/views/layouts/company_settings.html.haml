@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 %html
-  %head
-    %title Partizer
-    = csrf_meta_tags
-    = csp_meta_tag
-
-    = stylesheet_pack_tag 'styles', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = favicon_link_tag 'favicon.ico'
-  %header
-    = render 'layouts/header'
+  = render 'layouts/header'
   %body.d-flex.flex-column
     = render partial: 'layouts/flash', flash: flash
-
-    = yield
-  %footer
-    = render 'layouts/footer'
+    .row.no-gutters
+      .col-3.h-100
+        .bg-dark.h-100.text-light.p-3
+          .list-group.pt-4
+            = link_to 'Podstawowe informacje', company_settings_basics_path,
+              class: 'list-group-item list-group-item-action'
+            = link_to 'Podstrony', '',
+              class: 'list-group-item list-group-item-action'
+            = link_to 'Zdjęcia', '',
+              class: 'list-group-item list-group-item-action'
+            = link_to 'Pliki', '',
+              class: 'list-group-item list-group-item-action'
+      .col-9
+        = yield
+  = render 'layouts/footer'
