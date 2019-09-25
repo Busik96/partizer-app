@@ -19,5 +19,5 @@ Geocoder.configure(
   # Calculation options
   xunits: :km,                 # :km for kilometers or :mi for miles
   distances: :linear,          # :spherical or :linear
-  api_key: 'AIzaSyBLWqbF6ak4jmPMmgQv_L4LrxHLgQ36pgU'
+  api_key: ENV['GOOGLE_PLACES_API_KEY']
 )
