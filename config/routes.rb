@@ -11,10 +11,19 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :companies
+  resources :companies do
+    scope module: 'company_settings' do
+      resource :settings, only: [:show] do
+        resource :basics
+        resources :pages
+        resources :photos
+        resources :files
+      end
+    end
+  end
 
   namespace :users do
-    resources :companies
+    resources :companies, only: [:index]
   end
 
   get '*page', to: 'home#static_page', as: :static_page
