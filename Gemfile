@@ -16,6 +16,7 @@ gem 'sass-rails', '~> 5'
 gem 'simple_form'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'geocoder'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
