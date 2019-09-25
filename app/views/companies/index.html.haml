@@ -25,6 +25,7 @@
                   class: 'img.card-img-top'
                 .card-body
                   %h5.card-title= company.name
+                  %hr
                   %p.card-text= company.short_description
                   %p.card-text= company.address.city
                   = link_to 'Zobacz więcej!', '', class: 'btn btn-dark'

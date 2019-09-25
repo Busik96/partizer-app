@@ -24,7 +24,14 @@
 
 class Address < ApplicationRecord
   belongs_to :addressable, polymorphic: true
+  geocoded_by :address
 
   # validations
   validates :address1, :city, :zipcode, presence: true
+
+  private
+
+  def address
+    [address1, address2, city].compact.join(', ')
+  end
 end
