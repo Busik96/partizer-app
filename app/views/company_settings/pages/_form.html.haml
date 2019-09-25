@@ -1,0 +1,17 @@
+.form-inputs
+  .row
+    .col-12.col-md-6
+      = f.input :title,
+        required: true,
+        autofocus: true
+    .col-12.col-md-6
+      = f.input :menu_title,
+        required: false
+  .row
+    .col-12
+      = f.input :content, as: :rich_text_area,
+        input_html: { style: 'height: auto;' },
+        required: true
+  .row
+    .col-12
+      = f.input :published, as: :boolean

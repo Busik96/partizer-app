@@ -6,10 +6,11 @@
     .row.no-gutters
       .col-3.h-100
         .bg-dark.h-100.text-light.p-3
+          %h4= @company.name
           .list-group.pt-4
             = link_to 'Podstawowe informacje', company_settings_basics_path,
               class: 'list-group-item list-group-item-action'
-            = link_to 'Podstrony', '',
+            = link_to 'Podstrony', company_settings_pages_path,
               class: 'list-group-item list-group-item-action'
             = link_to 'Zdjęcia', '',
               class: 'list-group-item list-group-item-action'

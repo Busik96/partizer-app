@@ -2,8 +2,6 @@
 
 module CompanySettings
   class BasicsController < BaseController
-    before_action :find_company, only: %i[show update destroy]
-
     def show; end
 
     def update
@@ -24,10 +22,6 @@ module CompanySettings
     end
 
     private
-
-    def find_company
-      @company = Company.find(params[:company_id]) if params[:company_id]
-    end
 
     def company_params
       params.require(:company).permit(

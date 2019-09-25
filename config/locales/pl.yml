@@ -1,4 +1,6 @@
 pl:
+  'true': Tak
+  'false': Nie
   attributes:
     password: Hasło
     password_confirmation: Potwierdzenie hasła
@@ -8,6 +10,10 @@ pl:
     city: Miasto
     zipcode: Kod pocztowy
     categories: Kategorie
+    title: Tytuł
+    menu_title: Tytuł w menu bocznym
+    content: Treść
+    published: Opublikowana
   activerecord:
     errors:
       format: "%{attribute} %{message}"

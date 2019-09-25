@@ -21,6 +21,7 @@ class Company < ApplicationRecord
   has_one :address, as: :addressable
   has_many :company_categories, dependent: :destroy
   has_many :categories, through: :company_categories
+  has_many :company_pages, dependent: :destroy
 
   accepts_nested_attributes_for :address
 

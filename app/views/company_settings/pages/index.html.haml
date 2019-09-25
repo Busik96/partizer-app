@@ -1,0 +1,42 @@
+#page-content
+  .container.center-content
+    .col-12.pt-5
+      - if @company.company_pages.exists?
+        %h3
+          Podstrony firmy:
+          =link_to 'Utwórz podstronę', new_company_settings_page_path,
+            class: 'btn btn-success float-right'
+        %table.table
+          %thead.thead-dark
+            %tr
+              %th{scope: 'col'} #
+              %th{scope: 'col'} Tytuł:
+              %th{scope: 'col'} Tytuł w menu:
+              %th{scope: 'col'} Czy opublikowana?
+              %th{scope: 'col'}
+          - @pages.each do |page|
+            %tbody
+              %tr
+                %th{scope: 'col'}= page.id
+                %td= page.title
+                - if page.menu_title.blank?
+                  %td nie dodano
+                - else
+                  %td= page.menu_title
+                %td= t(page.published?.to_s)
+                %td
+                  = link_to 'Edytuj podstronę', edit_company_settings_page_path(@company, page),
+                    class: 'btn btn-dark'
+                  = link_to 'Usuń podstronę', company_settings_page_path(@company, page),
+                    method: :delete, data: { confirm: 'Czy na pewno?' }, class: 'btn btn-danger'
+      - else
+        .center-page.text-center
+          %h3 Nie posiadasz żadnej podstrony! Oczywiście możesz to zmienić:
+          =link_to 'Utwórz podstronę', new_company_settings_page_path, class: 'btn btn-dark'
+
+
+
+
+
+
+
