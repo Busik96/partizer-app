@@ -2,6 +2,16 @@
 %html
   = render 'layouts/header'
   %body.d-flex.flex-column
-    = render partial: 'layouts/flash', flash: flash
-    = yield
+    .row.no-gutters
+      - if content_for?(:sidebar)
+        .col-3.h-100
+          .bg-dark.h-100.text-light.p-3
+            = yield :sidebar
+        .col-9
+          = render partial: 'layouts/flash', flash: flash
+          = yield
+      - else
+        .col-12
+          = render partial: 'layouts/flash', flash: flash
+          = yield
   = render 'layouts/footer'
