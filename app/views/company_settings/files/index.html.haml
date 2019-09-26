@@ -1,0 +1,40 @@
+#page-content
+  .container.center-content
+    .col-12.p-3
+      - if @files.exists?
+        %h3
+          Pliki:
+        .row
+          .col-12.p-3.center-content
+            %table.table
+              %thead.thead-dark
+                %tr
+                  %th{scope: 'col'} #
+                  %th{scope: 'col'} Nazwa pliku:
+                  %th{socpe: 'col'} Link
+                  %th{scope: 'col'}
+              - @files.each do |file|
+                %tbody
+                  %tr
+                    %th{scope: 'col'}= file.id
+                    %td= file.name
+                    %td= link_to file.file.filename, url_for(file.file)
+                    %td
+                      = link_to '', company_settings_file_path(@company, file),
+                        method: :delete, class: 'btn btn-danger fas fa-minus-circle',
+                        data: { confirm: 'Czy na pewno?'}
+      - else
+        .center-page.text-center
+          %h3 Nie posiadasz żadnych plików! Oczywiście możesz to zmienić:
+      .row
+        .col-12
+          = simple_form_for(@new_file, url: company_settings_files_path) do |f|
+            .form-inputs
+              .row
+                .col-12
+                  = f.input :name
+              .row
+                .col-12
+                  = f.input :file, as: :file
+            .form-actions.pt-3
+              = f.button :submit, 'Dodaj', class: 'btn btn-large btn-dark'

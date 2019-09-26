@@ -9,8 +9,13 @@ module CompanySettings
     end
 
     def create
-      @company.photos.attach(photo_params[:photos])
-      redirect_to action: :index
+      if @company.photos.attach(photo_params[:photos])
+        flash[:success] = 'Pomyślnie dodano'
+        redirect_to action: :index
+      else
+        flash[:error] = 'Coś poszło nie tak'
+        render 'index'
+      end
     end
 
     def destroy

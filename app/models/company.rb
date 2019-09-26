@@ -23,6 +23,7 @@ class Company < ApplicationRecord
   has_many :company_categories, dependent: :destroy
   has_many :categories, through: :company_categories
   has_many :company_pages, dependent: :destroy
+  has_many :company_files, dependent: :destroy
 
   accepts_nested_attributes_for :address
 
@@ -30,5 +31,4 @@ class Company < ApplicationRecord
   validates :categories, presence: true
 
   has_many_attached :photos
-  has_many_attached :files
 end

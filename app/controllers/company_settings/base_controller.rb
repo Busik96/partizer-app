@@ -8,7 +8,7 @@ module CompanySettings
     private
 
     def load_company
-      @company = current_user.companies.find params[:company_id]
+      @company = current_user.companies.find(params[:company_id])
     end
   end
 end
