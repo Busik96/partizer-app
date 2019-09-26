@@ -2,7 +2,6 @@
 %html
   = render 'layouts/header'
   %body.d-flex.flex-column
-    = render partial: 'layouts/flash', flash: flash
     .row.no-gutters
       .col-3.h-100
         .bg-dark.h-100.text-light.p-3
@@ -12,10 +11,11 @@
               class: 'list-group-item list-group-item-action'
             = link_to 'Podstrony', company_settings_pages_path,
               class: 'list-group-item list-group-item-action'
-            = link_to 'Zdjęcia', '',
+            = link_to 'Zdjęcia', company_settings_photos_path,
               class: 'list-group-item list-group-item-action'
-            = link_to 'Pliki', '',
+            = link_to 'Pliki', company_settings_files_path,
               class: 'list-group-item list-group-item-action'
       .col-9
+        = render partial: 'layouts/flash', flash: flash
         = yield
   = render 'layouts/footer'

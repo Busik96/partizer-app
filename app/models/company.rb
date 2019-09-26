@@ -12,6 +12,7 @@
 #  updated_at        :datetime         not null
 #  user_id           :bigint
 #
+#
 # Indexes
 #
 #  index_companies_on_user_id  (user_id)
@@ -27,4 +28,7 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
   validates :categories, presence: true
+
+  has_many_attached :photos
+  has_many_attached :files
 end

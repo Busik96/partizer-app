@@ -26,5 +26,5 @@ Rails.application.routes.draw do
     resources :companies
   end
 
-  get '*page', to: 'home#static_page', as: :static_page
+  #get '*page', to: 'home#static_page', as: :static_page
 end
