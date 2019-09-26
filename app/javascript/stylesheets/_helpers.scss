@@ -4,3 +4,18 @@
   justify-content: center;
 }
 
+.image {
+  position: relative;
+
+  &-remove {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: red;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

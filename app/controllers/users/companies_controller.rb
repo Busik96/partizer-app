@@ -2,7 +2,7 @@
 
 module Users
   class CompaniesController < ProtectedController
-    before_action :set_company, only: %i[edit update destroy]
+    before_action :set_company, only: %i[update]
 
     def index
       @companies = current_user.companies
@@ -22,25 +22,6 @@ module Users
         flash[:error] = 'Coś poszło nie tak!'
         render 'new'
       end
-    end
-
-    def edit; end
-
-    def update
-      if @company.update_attributes(company_params)
-        flash[:success] = 'Pomyślnie zaktualizowano dane!'
-        redirect_to users_companies_path
-      else
-        flash[:error] = 'Coś poszło nie tak!'
-        render 'edit'
-      end
-    end
-
-    def destroy
-      @company.destroy
-      flash[:error] = 'Cytując Prezesa, jeśli nie potrafisz w obecnych warunkach utrzymać
-      firmy to nie nadajesz się by być przedsiębiorcą!'
-      redirect_to users_companies_path
     end
 
     private

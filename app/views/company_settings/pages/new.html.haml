@@ -1,0 +1,10 @@
+.row
+  .col-12
+    %h3 Nowa podstrona
+    = simple_form_for(@page, url: company_settings_pages_path) do |f|
+      = render 'form', f: f
+      .form-actions
+        = f.button :submit, 'Utwórz podstronę', class: 'btn btn-large btn-dark'
+      = link_to :back do
+        %i.fas.fa-arrow-left
+        Powrót

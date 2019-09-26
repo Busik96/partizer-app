@@ -4,9 +4,12 @@ source 'https://rubygems.org'
 
 ruby '2.6.4'
 
+gem 'active_storage_validations'
 gem 'activeadmin'
 gem 'devise'
+gem 'geocoder'
 gem 'haml-rails'
+gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -16,7 +19,6 @@ gem 'sass-rails', '~> 5'
 gem 'simple_form'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'geocoder'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

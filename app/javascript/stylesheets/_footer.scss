@@ -4,7 +4,8 @@ body {
 }
 
 #page-content {
-  flex: 1 0 auto;
+  min-height: 800px;
+  padding: 1rem;
 }
 
 #sticky-footer {
