@@ -1,14 +1,11 @@
-#page-content
-  .container-fluid
-    .row
-      .col-12.center-content
-        .p-4
-          %h2 Edytuj firmę:
-          = simple_form_for(@company, url: company_settings_basics_path(@company)) do |f|
-            = render 'form', f: f
-            .form-actions
-              = f.button :submit, 'Zaktualizuj dane', class: 'btn btn-large btn-dark'
-              = link_to 'Usuń firmę', company_settings_basics_path(@company),class: 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Czy na pewno?' }
-            = link_to :back do
-              %i.fas.fa-arrow-left
-              Powrót
+.row
+  .col-12
+    %h3 Edytuj dane firmy:
+    = simple_form_for(@company, url: company_settings_basics_path(@company)) do |f|
+      = render 'form', f: f
+      .form-actions
+        = f.button :submit, 'Zaktualizuj dane', class: 'btn btn-large btn-dark'
+        = link_to 'Usuń firmę', company_settings_basics_path(@company),class: 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Czy na pewno?' }
+      = link_to :back do
+        %i.fas.fa-arrow-left
+        Powrót

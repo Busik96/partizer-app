@@ -10,18 +10,19 @@ module CompanySettings
     end
 
     def create
-      if @company.company_files.create(file_params)
+      @file = @company.company_files.build(file_params)
+      if @file.save
         flash[:success] = 'Pomyślnie dodano plik'
-        redirect_to action: :index
       else
         flash[:error] = 'Coś poszło nie tak. Spróbuj za rok.'
-        render 'index'
       end
+
+      redirect_to action: :index
     end
 
     def destroy
       @file.destroy
-      flash[:error] = 'Pomyślnie usunięto plik'
+      flash[:success] = 'Pomyślnie usunięto plik'
       redirect_to action: :index
     end
 

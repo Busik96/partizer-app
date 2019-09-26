@@ -15,8 +15,10 @@
 #  index_company_files_on_company_id  (company_id)
 #
 
-
 class CompanyFile < ApplicationRecord
   belongs_to :company
   has_one_attached :file
+
+  validates :file, presence: true, attached: true, size: { less_than: 15.megabytes }
+  validates :name, presence: true
 end

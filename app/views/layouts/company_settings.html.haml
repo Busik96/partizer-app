@@ -5,8 +5,8 @@
     .row.no-gutters
       .col-3.h-100
         .bg-dark.h-100.text-light.p-3
-          %h4= @company.name
-          .list-group.pt-4
+          %h3= @company.name
+          .list-group
             = link_to 'Podstawowe informacje', company_settings_basics_path,
               class: 'list-group-item list-group-item-action'
             = link_to 'Podstrony', company_settings_pages_path,
@@ -16,6 +16,7 @@
             = link_to 'Pliki', company_settings_files_path,
               class: 'list-group-item list-group-item-action'
       .col-9
-        = render partial: 'layouts/flash', flash: flash
-        = yield
+        #page-content.container-fluid
+          = render partial: 'layouts/flash', flash: flash
+          = yield
   = render 'layouts/footer'

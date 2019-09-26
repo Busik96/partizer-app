@@ -1,15 +1,12 @@
-#page-content
-  .container
-    .row
-      .col-12.center-content
-        .p-4
-          %h2 Zaktualizuj podstronę
-          = simple_form_for(@page, url: company_settings_page_path) do |f|
-            = render 'form', f: f
-            .form-actions
-              = f.button :submit, 'Zaktualizuj podstronę', class: 'btn btn-large btn-dark'
-              = link_to 'Usuń podstronę', company_settings_page_path, method: :delete,
-                data: { confirm: 'Czy na pewno?' }, class: 'btn btn-danger float-right'
-            = link_to :back do
-              %i.fas.fa-arrow-left
-              Powrót
+.row
+  .col-12
+      %h3 Zaktualizuj podstronę
+      = simple_form_for(@page, url: company_settings_page_path) do |f|
+        = render 'form', f: f
+        .form-actions
+          = f.button :submit, 'Zaktualizuj podstronę', class: 'btn btn-large btn-dark'
+          = link_to 'Usuń podstronę', company_settings_page_path, method: :delete,
+            data: { confirm: 'Czy na pewno?' }, class: 'btn btn-danger float-right'
+        = link_to :back do
+          %i.fas.fa-arrow-left
+          Powrót

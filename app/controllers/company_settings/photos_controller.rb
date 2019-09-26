@@ -9,19 +9,25 @@ module CompanySettings
     end
 
     def create
+      if params[:company].blank?
+        flash[:error] = 'No weź...dodaj jakieś zdjęcie :)'
+        redirect_to action: :index
+        return
+      end
+
       if @company.photos.attach(photo_params[:photos])
         flash[:success] = 'Pomyślnie dodano'
-        redirect_to action: :index
       else
-        flash[:error] = 'Coś poszło nie tak'
-        render 'index'
+        flash[:error] = @company.errors[:photos].last
       end
+
+      redirect_to action: :index
     end
 
     def destroy
       @photo.purge
       @photo.destroy
-      flash[:error] = 'Zdjęcie zostało usunięte'
+      flash[:success] = 'Zdjęcie zostało usunięte'
       redirect_to action: :index
     end
 

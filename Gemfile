@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.4'
 
+gem 'active_storage_validations'
 gem 'activeadmin'
 gem 'devise'
 gem 'geocoder'

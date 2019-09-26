@@ -21,6 +21,8 @@ pl:
         accepted: musi zostać zaakceptowane
         blank: nie może być puste
         confirmation: nie zgadza się z polem %{attribute}
+        content_type_invalid: Plik ma niedozwolony typ
+        file_size_out_of_range: Plik ma zbyt duży rozmiar
         empty: nie może być puste
         equal_to: musi być równe %{count}
         even: musi być parzyste

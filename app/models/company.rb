@@ -24,11 +24,14 @@ class Company < ApplicationRecord
   has_many :categories, through: :company_categories
   has_many :company_pages, dependent: :destroy
   has_many :company_files, dependent: :destroy
+  has_many_attached :photos
 
   accepts_nested_attributes_for :address
 
   validates :name, presence: true
   validates :categories, presence: true
-
-  has_many_attached :photos
+  validates :photos,
+            attached: true,
+            content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+            size: { less_than: 7.megabytes }
 end

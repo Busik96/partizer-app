@@ -1,30 +1,25 @@
-#page-content
-  .container.center-content
-    .col-12.p-3
-      - if @company.photos.exists?
-        %h3
-          Zdjęcia:
-        .row
-          - @company.photos.each do |photo|
-            .col-12.col-md-3.p-3.center-content
-              .image
-                = image_tag photo.variant(resize_to_limit: [200, 200]), class: 'img-thumbnail'
-                = link_to '', company_settings_photo_path(@company, photo),
-                  method: :delete, class: 'fas fa-minus-circle image-remove',
-                  data: { confirm: 'Czy na pewno?'}
-
-      - else
-        .center-page.text-center
-          %h3 Nie posiadasz żadnych zdjęć! Oczywiście możesz to zmienić:
+.row
+  .col-12
+    %h3
+      Zdjęcia:
+    - if @photos.exists?
       .row
-        .col-12
-          = form_for(:company, url: company_settings_photos_path) do |f|
-            .form-inputs
-              .row
-                .col-12
-                  = f.file_field :photos, multiple: true, name: 'company[photos][]'
-            .form-actions.pt-3
-              = f.submit 'Dodaj', class: 'btn btn-large btn-dark'
+        - @photos.each do |photo|
+          .col-12.col-md-3.p-3.center-content
+            .image
+              = image_tag photo.variant(resize_to_limit: [200, 200]), class: 'img-thumbnail'
+              = link_to '', company_settings_photo_path(@company, photo),
+                method: :delete, class: 'fas fa-minus-circle image-remove',
+                data: { confirm: 'Czy na pewno?'}
+
+    - else
+      .center-page.text-center
+        %h4 Nie posiadasz żadnych zdjęć! Oczywiście możesz to zmienić:
+    = form_for(:company, url: company_settings_photos_path) do |f|
+      .form-inputs
+        = f.file_field :photos, multiple: true, name: 'company[photos][]'
+      .form-actions.pt-3
+        = f.submit 'Dodaj', class: 'btn btn-large btn-dark'
 
 
 
