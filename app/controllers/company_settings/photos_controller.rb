@@ -9,11 +9,7 @@ module CompanySettings
     end
 
     def create
-      if params[:company].blank?
-        flash[:error] = 'No weź...dodaj jakieś zdjęcie :)'
-        redirect_to action: :index
-        return
-      end
+      return protect_from_empty if params[:company].blank?
 
       if @company.photos.attach(photo_params[:photos])
         flash[:success] = 'Pomyślnie dodano'
@@ -39,6 +35,15 @@ module CompanySettings
 
     def photo_params
       params.require(:company).permit(photos: [])
+    end
+
+    def protect_from_empty
+      flash[:error] = 'No weź...dodaj jakieś zdjęcie :)'
+      redirect_to action: :index
+    end
+
+    def load_company
+      @company = current_user.companies.with_attached_photos.find(params[:company_id])
     end
   end
 end
