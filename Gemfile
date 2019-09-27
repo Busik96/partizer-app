@@ -27,12 +27,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'factory_bot'
+  gem 'faker'
   gem 'foreman'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', github: 'rspec/rspec-rails', branch: '4-0-dev'
   gem 'rubocop'
   gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 group :development do
