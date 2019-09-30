@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :companies
+    resources :companies, only: [:index, :new, :create]
   end
 
   #get '*page', to: 'home#static_page', as: :static_page
