@@ -53,11 +53,11 @@ RSpec.describe CompanySettings::FilesController, type: :controller do
     context 'with valid attributes' do
       let(:name) { Faker::Company.name }
 
-      it 'creates a new user company' do
+      it 'create new file' do
         expect { call }.to change(company1.company_files, :count).by(1)
       end
 
-      it 'redirects to companies index' do
+      it 'redirects to files index' do
         call
         expect(response).to redirect_to(company_settings_files_path)
       end
@@ -66,7 +66,7 @@ RSpec.describe CompanySettings::FilesController, type: :controller do
     context 'with invalid attributes' do
       let(:name) { nil }
 
-      it 'does not save the new user company' do
+      it 'does not save the new file' do
         expect { call }.to_not change(company1.company_files, :count)
       end
 
