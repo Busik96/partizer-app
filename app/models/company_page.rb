@@ -24,4 +24,6 @@
 class CompanyPage < ApplicationRecord
   belongs_to :company
   has_rich_text :content
+
+  validates :title, presence: true
 end
