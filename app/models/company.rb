@@ -34,4 +34,8 @@ class Company < ApplicationRecord
   validates :photos,
             content_type: ['image/png', 'image/jpg', 'image/jpeg'],
             size: { less_than: 7.megabytes }
+
+  def owner?(user)
+    user_id == user.id
+  end
 end

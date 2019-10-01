@@ -1,0 +1,18 @@
+- content_for :sidebar do
+  .bg-dark.h-100.text-light
+    = link_to companies_path do
+      %i.fas.fa-arrow-left.text-light
+        Powrót do katalogu firm
+    %hr.bg-light
+    %h5= @company.name.capitalize
+    .list-group
+      = link_to 'Podstawowe informacje', basics_company_path,
+        class: 'list-group-item list-group-item-action'
+      - if @pages.exists?
+        - @pages.each do |page|
+          = link_to page.page_title, static_page_company_path(@company.id, page.slug),
+            class: 'list-group-item list-group-item-action'
+      - if @company.company_files.exists?
+        = link_to 'Pliki', files_company_path,
+          class: 'list-group-item list-group-item-action'
+

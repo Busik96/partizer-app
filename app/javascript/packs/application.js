@@ -21,4 +21,9 @@ import './styles.scss'
 // const imagePath = (name) => images(name, true)
 $(document).on('turbolinks:load', () => {
   $('#company_category_ids').select2({ width: 'auto' })
+  $('.carousel').carousel()
+})
+
+$('form').on('submit', (event) => {
+  $(event.target).find('button[type=submit]').attr('disabled', true)
 })

@@ -7,6 +7,7 @@
 #  id         :bigint           not null, primary key
 #  menu_title :string
 #  published  :boolean          default(FALSE)
+#  slug       :string
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -22,8 +23,16 @@
 #
 
 class CompanyPage < ApplicationRecord
+  extend FriendlyId
+
   belongs_to :company
   has_rich_text :content
 
   validates :title, presence: true
+
+  friendly_id :page_title, use: :scoped, scope: :company
+
+  def page_title
+    menu_title.presence || title
+  end
 end

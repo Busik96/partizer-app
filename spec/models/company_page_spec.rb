@@ -7,6 +7,7 @@
 #  id         :bigint           not null, primary key
 #  menu_title :string
 #  published  :boolean          default(FALSE)
+#  slug       :string
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

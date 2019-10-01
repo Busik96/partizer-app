@@ -20,6 +20,12 @@ Rails.application.routes.draw do
         resources :files
       end
     end
+
+    member do
+      get :basics
+      get :files
+      get '*page', to: 'companies#show_page', as: :static_page
+    end
   end
 
   namespace :users do

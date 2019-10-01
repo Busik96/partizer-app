@@ -1,0 +1,7 @@
+= render 'sidebar'
+#page-content.container-fluid
+  - if @company.owner?(current_user)
+    .text-right= link_to 'Edit',  edit_company_settings_page_path(@company, @page),
+      class: 'btn btn-small btn-danger'
+  %h4= @page.title
+  .lead= @page.content

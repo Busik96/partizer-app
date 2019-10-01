@@ -44,7 +44,7 @@ module CompanySettings
     private
 
     def load_page
-      @page = @company.company_pages.find(params[:id])
+      @page = @company.company_pages.friendly.find(params[:id])
     end
 
     def page_params

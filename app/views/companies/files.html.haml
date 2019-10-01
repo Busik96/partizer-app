@@ -1,0 +1,23 @@
+= render 'sidebar'
+#page-content.container-fluid
+  - if @company.owner?(current_user)
+    .text-right
+      = link_to 'Edit', company_settings_files_path(@company),
+        class: 'btn btn-small btn-danger'
+  .row
+    .col-12
+      %h4 Pliki:
+      - if @files.exists?
+        %table.table
+          %thead.thead-dark
+            %tr
+              %th{scope: 'col'} Nazwa pliku:
+              %th{socpe: 'col'} Link
+              %th{scope: 'col'}
+          - @files.each do |file|
+            %tbody
+              %tr
+                %td= file.name
+                %td= link_to file.file.filename, url_for(file.file)
+
+

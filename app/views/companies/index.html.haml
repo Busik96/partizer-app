@@ -25,7 +25,7 @@
               %hr
               %p.card-text= company.short_description
               %p.card-text= company.address.city
-              = link_to 'Zobacz więcej!', '', class: 'btn btn-dark'
+              = link_to 'Zobacz więcej!', company_path(company), class: 'btn btn-dark'
 - else
   .center-page.text-center.pt-5
     %h3 Nie posiadamy w katalogu firmy o takich parametrach! Oczywiście możesz to zmienić:
