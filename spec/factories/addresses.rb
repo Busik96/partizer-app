@@ -22,14 +22,14 @@
 #  index_addresses_on_addressable_type_and_addressable_id  (addressable_type,addressable_id)
 #
 
-require 'rails_helper'
+FactoryBot.define do
+  factory :address do
+    address1 { Faker::Address.street_address }
+    city { Faker::Address.city }
+    zipcode { Faker::Address.zip }
 
-RSpec.describe Address, type: :model do
-  describe 'associations' do
-    it { is_expected.to belong_to(:addressable) }
-  end
-
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:address1) }
+    trait :for_company do
+      association(:addressable, factory: :company)
+    end
   end
 end

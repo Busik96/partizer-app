@@ -1,0 +1,63 @@
+= render 'sidebar'
+#page-content.container-fluid
+  - if @company.owner?(current_user)
+    .text-right
+      = link_to 'Edit', company_settings_basics_path(@company),
+        class: 'btn btn-small btn-danger'
+  .row
+    .col-12.col-md-6
+      %h4 Krótki opis:
+      = @company.short_description
+      %hr
+      %h4 Adres:
+      = @company.address.address1
+      %br
+      = @company.address.zipcode
+      = @company.address.city
+      .mapouter
+        .gmap_canvas
+          %iframe#gmap_canvas{ frameborder: 0, height: 250, marginheight: 0, marginwidth: 0, scrolling: 'no', src: "https://maps.google.com/maps?q=#{@company.address.latitude}%20#{@company.address.longitude}&t=&z=13&ie=UTF8&iwloc=&output=embed", width: 400}
+    .col-12.col-md-6
+      %h4 Napisz do nas:
+      = simple_form_for( :message, url: companies_path ) do |f|
+        .form-inputs
+          .row
+            .col-12.col-md-6
+              = f.input :first_name,
+                require: false
+            .col-12.col-md-6
+              = f.input :email,
+                required: true
+          .row
+            .col-12
+              = f.input :message,
+                as: :text,
+                raquire: true
+        .form-actions
+          = f.button :submit, 'Wyślij', class: 'btn btn-large btn-dark'
+      %hr
+      %h4 Numer telefonu:
+      - if @company.address.phone_number.blank?
+        Nie podano
+      - else
+        = @company.address.phone_number
+  - if @company.photos.exists?
+    .row
+      .col-12
+        %hr
+        %h4 Zdjęcia:
+        #carouselExampleControls.carousel.slide{ data: { ride: 'carousel' } }
+          .carousel-inner
+            = @company.photos.each_with_index do |photo, index|
+              - if index.zero?
+                .carousel-item.active
+                  = image_tag photo, class: 'd-block w-100 h-200'
+              - else
+                .carousel-item
+                  = image_tag photo, class: 'd-block w-100 h-200'
+          %a.carousel-control-prev{ href: "#carouselExampleControls", role: 'button', data: { slide: 'prev' }}
+            %span.carousel-control-prev-icon{ aria: { hidden: 'true' } }
+            %span.sr-only Poprzednie
+          %a.carousel-control-next{ href: "#carouselExampleControls", role: 'button', data: { slide: 'next' }}
+            %span.carousel-control-next-icon{ aria: { hidden: 'true' } }
+            %span.sr-only Następne

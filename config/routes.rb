@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :companies do
+  resources :companies, only: [:index, :show] do
     scope module: 'company_settings' do
       resource :settings, only: [:show] do
         resource :basics
@@ -20,10 +20,16 @@ Rails.application.routes.draw do
         resources :files
       end
     end
+
+    member do
+      get :basics
+      get :files
+      get '*page', to: 'companies#show_page', as: :static_page
+    end
   end
 
   namespace :users do
-    resources :companies
+    resources :companies, only: [:index, :new, :create]
   end
 
   #get '*page', to: 'home#static_page', as: :static_page

@@ -2,8 +2,6 @@
 
 module Users
   class CompaniesController < ProtectedController
-    before_action :set_company, only: %i[update]
-
     def index
       @companies = current_user.companies
     end
@@ -32,10 +30,6 @@ module Users
         category_ids: [],
         address_attributes: %i[id address1 address2 city zipcode phone_number]
       )
-    end
-
-    def set_company
-      @company = current_user.companies.find(params[:id])
     end
   end
 end

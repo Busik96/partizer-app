@@ -20,5 +20,19 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { described_class.new }
+
+  describe 'associations' do
+    it { is_expected.to have_one(:address) }
+    it { is_expected.to have_many(:company_categories).dependent(:destroy) }
+    it { is_expected.to have_many(:categories).through(:company_categories) }
+    it { is_expected.to have_many(:company_pages).dependent(:destroy) }
+    it { is_expected.to have_many(:company_files).dependent(:destroy) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:categories) }
+    it { is_expected.to validate_numericality_of(:nip) }
+  end
 end

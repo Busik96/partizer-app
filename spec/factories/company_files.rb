@@ -15,10 +15,11 @@
 #  index_company_files_on_company_id  (company_id)
 #
 
-class CompanyFile < ApplicationRecord
-  belongs_to :company
-  has_one_attached :file
-
-  validates :file, presence: true, size: { less_than: 15.megabytes }
-  validates :name, presence: true
+FactoryBot.define do
+  factory :company_file do
+    name { Faker::Military.navy_rank }
+    file do
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/support/files/test_file.txt'), 'text/plain')
+    end
+  end
 end

@@ -29,9 +29,13 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :address
 
   validates :name, presence: true
+  validates :nip, numericality: true, allow_blank: true
   validates :categories, presence: true
   validates :photos,
-            attached: true,
             content_type: ['image/png', 'image/jpg', 'image/jpeg'],
             size: { less_than: 7.megabytes }
+
+  def owner?(user)
+    user_id == user.id
+  end
 end

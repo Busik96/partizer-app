@@ -22,17 +22,10 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 
-class CompanyPage < ApplicationRecord
-  extend FriendlyId
-
-  belongs_to :company
-  has_rich_text :content
-
-  validates :title, presence: true
-
-  friendly_id :page_title, use: :scoped, scope: :company
-
-  def page_title
-    menu_title.presence || title
+FactoryBot.define do
+  factory :company_page do
+    title { Faker::Company.industry }
+    menu_title { Faker::Company.industry }
+    content { Faker::Lorem.paragraph }
   end
 end
