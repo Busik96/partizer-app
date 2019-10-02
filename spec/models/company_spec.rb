@@ -20,6 +20,9 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
+  let(:user) { create :user, companies: [company1] }
+  let(:category1) { create :category }
+  let!(:company1) { create :company, id: 1, categories: [category1] }
   subject { described_class.new }
 
   describe 'associations' do
@@ -34,5 +37,9 @@ RSpec.describe Company, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:categories) }
     it { is_expected.to validate_numericality_of(:nip) }
+  end
+
+  describe 'is owner?' do
+    it { expect(company1.owner?(user)).to be true }
   end
 end
