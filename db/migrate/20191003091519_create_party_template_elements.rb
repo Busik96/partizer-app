@@ -4,6 +4,7 @@ class CreatePartyTemplateElements < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.integer :priority, default: 0
+      t.references :party_template
 
       t.timestamps
     end

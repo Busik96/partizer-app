@@ -23,5 +23,5 @@
 
 class PartyTemplateElementCategory < ApplicationRecord
   belongs_to :category
-  belongs_to :party_element
+  belongs_to :party_template_element
 end

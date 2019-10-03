@@ -26,5 +26,5 @@ class Party < ApplicationRecord
   has_many :party_elements
   has_many :party_guests
 
-  validates %i[name start_date end_date], presence: true
+  validates :name, :start_date, :end_date, presence: true
 end
