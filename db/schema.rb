@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_082004) do
+ActiveRecord::Schema.define(version: 2019_10_03_092237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,19 +131,51 @@ ActiveRecord::Schema.define(version: 2019_10_03_082004) do
     t.index ["company_id"], name: "index_company_pages_on_company_id"
   end
 
-  create_table "party_element_categories", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "party_element_id", null: false
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.bigint "party_template_id"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_party_element_categories_on_category_id"
-    t.index ["party_element_id"], name: "index_party_element_categories_on_party_element_id"
+    t.index ["party_template_id"], name: "index_parties_on_party_template_id"
   end
 
   create_table "party_elements", force: :cascade do |t|
+    t.bigint "party_id", null: false
+    t.bigint "company_id"
+    t.bigint "party_template_element_id"
+    t.string "status"
+    t.float "amount"
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_party_elements_on_company_id"
+    t.index ["party_id"], name: "index_party_elements_on_party_id"
+    t.index ["party_template_element_id"], name: "index_party_elements_on_party_template_element_id"
+  end
+
+  create_table "party_guests", force: :cascade do |t|
+    t.string "name"
+    t.bigint "party_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_id"], name: "index_party_guests_on_party_id"
+  end
+
+  create_table "party_template_element_categories", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "party_template_element_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "pte_category_id"
+    t.index ["party_template_element_id"], name: "pte_party_template_element_id"
+  end
+
+  create_table "party_template_elements", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "priority"
+    t.integer "priority", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -175,6 +207,11 @@ ActiveRecord::Schema.define(version: 2019_10_03_082004) do
   add_foreign_key "company_categories", "categories"
   add_foreign_key "company_categories", "companies"
   add_foreign_key "company_pages", "companies"
-  add_foreign_key "party_element_categories", "categories"
-  add_foreign_key "party_element_categories", "party_elements"
+  add_foreign_key "parties", "party_templates"
+  add_foreign_key "party_elements", "companies"
+  add_foreign_key "party_elements", "parties"
+  add_foreign_key "party_elements", "party_template_elements"
+  add_foreign_key "party_guests", "parties"
+  add_foreign_key "party_template_element_categories", "categories", name: "pk_pte_category"
+  add_foreign_key "party_template_element_categories", "party_template_elements", name: "pk_pte_ele"
 end
