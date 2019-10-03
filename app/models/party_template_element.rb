@@ -12,9 +12,11 @@
 #  updated_at  :datetime         not null
 #
 
-
 class PartyTemplateElement < ApplicationRecord
   belongs_to :party_template
   has_many :party_element_categories
   has_many :categories, through: :party_element_categories
+
+  validates :name, presence: true
+  validates :description, length: { minimum: 0, maximimum: 250 }
 end

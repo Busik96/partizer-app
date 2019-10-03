@@ -12,7 +12,9 @@
 #  updated_at  :datetime         not null
 #
 
-
 class PartyTemplate < ApplicationRecord
   has_many :party_elements
+
+  validates :name, presence: true
+  validates :description, length: { minimum: 0, maximimum: 250 }
 end
