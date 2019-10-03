@@ -6,6 +6,8 @@ ruby '2.6.4'
 
 gem 'active_storage_validations'
 gem 'activeadmin'
+gem 'activeadmin_addons'
+gem 'activeadmin_json_editor', '~> 0.0.7'
 gem 'devise'
 gem 'friendly_id'
 gem 'geocoder'
