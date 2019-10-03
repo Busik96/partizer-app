@@ -24,5 +24,8 @@
 require 'rails_helper'
 
 RSpec.describe PartyTemplateElementCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it { is_expected.to belong_to(:party_template_element) }
+    it { is_expected.to belong_to(:category) }
+  end
 end
