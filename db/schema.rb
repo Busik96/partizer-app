@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_112053) do
+ActiveRecord::Schema.define(version: 2019_10_03_082004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,31 @@ ActiveRecord::Schema.define(version: 2019_10_01_112053) do
     t.index ["company_id"], name: "index_company_pages_on_company_id"
   end
 
+  create_table "party_element_categories", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "party_element_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_party_element_categories_on_category_id"
+    t.index ["party_element_id"], name: "index_party_element_categories_on_party_element_id"
+  end
+
+  create_table "party_elements", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "priority"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "party_templates", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.jsonb "settings"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -150,4 +175,6 @@ ActiveRecord::Schema.define(version: 2019_10_01_112053) do
   add_foreign_key "company_categories", "categories"
   add_foreign_key "company_categories", "companies"
   add_foreign_key "company_pages", "companies"
+  add_foreign_key "party_element_categories", "categories"
+  add_foreign_key "party_element_categories", "party_elements"
 end
