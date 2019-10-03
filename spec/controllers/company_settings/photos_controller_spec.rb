@@ -20,7 +20,7 @@ RSpec.describe CompanySettings::PhotosController, type: :controller do
         expect(response).to render_template('index')
       end
 
-      it 'assigns all company files to @photos' do
+      it 'assigns all company photos to @photos' do
         expect(assigns(:photos).to_a).to eq(company1.photos.to_a)
       end
     end
