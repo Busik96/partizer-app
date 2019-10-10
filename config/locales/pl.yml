@@ -14,6 +14,11 @@ pl:
     menu_title: Tytuł w menu bocznym
     content: Treść
     published: Opublikowana
+    settings: Opcje
+    description: Opis
+    parties: Imprezy
+    party: Impreza
+    priority: Priorytet
   activerecord:
     errors:
       format: "%{attribute} %{message}"
