@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: party_template_element_categories
@@ -21,5 +23,5 @@
 
 class PartyTemplateElementCategory < ApplicationRecord
   belongs_to :category
-  belongs_to :party_element
+  belongs_to :party_template_element
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: parties
@@ -22,5 +24,15 @@
 require 'rails_helper'
 
 RSpec.describe Party, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it { is_expected.to belong_to(:party_template).optional }
+    it { is_expected.to have_many(:party_elements) }
+    it { is_expected.to have_many(:party_guests) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:start_date) }
+    it { is_expected.to validate_presence_of(:end_date) }
+  end
 end

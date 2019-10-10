@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: party_elements
@@ -28,5 +30,9 @@
 require 'rails_helper'
 
 RSpec.describe PartyElement, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it { is_expected.to belong_to(:party) }
+    it { is_expected.to belong_to(:company).optional }
+    it { is_expected.to belong_to(:party_template_element).optional }
+  end
 end

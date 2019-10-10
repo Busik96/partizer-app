@@ -27,7 +27,6 @@
 #  fk_rails_...  (party_template_element_id => party_template_elements.id)
 #
 
-
 class PartyElement < ApplicationRecord
   belongs_to :party
   belongs_to :company, optional: true

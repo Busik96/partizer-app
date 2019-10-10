@@ -176,8 +176,10 @@ ActiveRecord::Schema.define(version: 2019_10_03_092237) do
     t.string "name"
     t.string "description"
     t.integer "priority", default: 0
+    t.bigint "party_template_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_template_id"], name: "index_party_template_elements_on_party_template_id"
   end
 
   create_table "party_templates", force: :cascade do |t|

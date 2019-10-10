@@ -21,9 +21,10 @@
 #  fk_rails_...  (party_template_id => party_templates.id)
 #
 
-
 class Party < ApplicationRecord
   belongs_to :party_template, optional: true
   has_many :party_elements
   has_many :party_guests
+
+  validates :name, :start_date, :end_date, presence: true
 end

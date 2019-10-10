@@ -19,7 +19,8 @@
 #  fk_rails_...  (party_id => parties.id)
 #
 
-
 class PartyGuest < ApplicationRecord
   belongs_to :party
+
+  validates :name, presence: true
 end
