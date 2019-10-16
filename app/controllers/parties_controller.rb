@@ -6,12 +6,12 @@ class PartiesController < ProtectedController
   end
 
   def new
-    @party = current_user.party.new
+    @party = current_user.parties.new
     @party.build_address
   end
 
   def create
-    @party = current_user.party.new(party_params)
+    @party = current_user.parties.new(party_params)
     if @party.save
       flash[:success] = 'Pomyślnie stworzono impreze!'
       redirect_to parties_path
