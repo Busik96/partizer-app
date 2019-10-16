@@ -22,6 +22,7 @@
 #
 
 class Party < ApplicationRecord
+  has_one :address, as: :addressable
   belongs_to :party_template, optional: true
   has_many :party_elements
   has_many :party_guests
