@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   # associations
   has_many :companies
+  has_many :parties
 
   # validations
   validates :first_name, :last_name, presence: true
