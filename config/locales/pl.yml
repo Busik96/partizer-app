@@ -19,6 +19,9 @@ pl:
     parties: Imprezy
     party: Impreza
     priority: Priorytet
+    party_template: Szablon imprezy
+    end_date: Data końcowa
+    start_date: Data rozpoczęcia
   activerecord:
     errors:
       format: "%{attribute} %{message}"
