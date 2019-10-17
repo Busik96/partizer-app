@@ -12,6 +12,8 @@ require("@rails/actiontext")
 import 'bootstrap'
 import 'select2'
 import './styles.scss'
+import 'flatpickr'
+import 'flatpickr/dist/l10n/pl'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -27,3 +29,12 @@ $(document).on('turbolinks:load', () => {
 $('form').on('submit', (event) => {
   $(event.target).find('button[type=submit]').attr('disabled', true)
 })
+
+$(document).on('turbolinks:load', () => {
+  $('.datepicker').flatpickr({
+    altInput: true,
+    altFormat: "d F Y",
+    'locale': 'pl'
+  })
+})
+
