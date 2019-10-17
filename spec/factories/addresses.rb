@@ -31,5 +31,9 @@ FactoryBot.define do
     trait :for_company do
       association(:addressable, factory: :company)
     end
+
+    trait :for_party do
+      association(:addressable, factory: :party)
+    end
   end
 end

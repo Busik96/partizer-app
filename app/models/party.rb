@@ -28,5 +28,7 @@ class Party < ApplicationRecord
   has_many :party_elements
   has_many :party_guests
 
+  accepts_nested_attributes_for :address
+
   validates :name, :start_date, :end_date, presence: true
 end
