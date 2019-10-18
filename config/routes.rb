@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  mount API::Root, at: '/'
+  mount GrapeSwaggerRails::Engine, at: '/swagger'
+
   authenticated :user do
     root 'dashboard#index', as: :authenticated_root
   end
