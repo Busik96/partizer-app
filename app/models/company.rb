@@ -36,6 +36,8 @@ class Company < ApplicationRecord
             size: { less_than: 7.megabytes }
 
   def owner?(user)
+    return false if user.nil?
+
     user_id == user.id
   end
 end
