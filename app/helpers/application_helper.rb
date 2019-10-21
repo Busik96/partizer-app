@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Pagy::Frontend
+
   FLASH_TO_BOOTSTRAP_CLASS = {
     success: 'alert-success',
     error: 'alert-danger',
