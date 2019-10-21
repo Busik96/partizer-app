@@ -3,7 +3,7 @@
     .col-12.pt-5
       - if current_user.parties.exists?
         %h3
-          Moje firmy:
+          Moje imprezy:
           =link_to 'Stwórz impreze!', new_party_path, class: 'btn btn-success float-right'
         %table.table
           %thead.thead-dark
@@ -24,7 +24,10 @@
         .center-page.text-center
           %h3 Nie posiadasz żadnej założonej firmy! Oczywiście możesz to zmienić:
           =link_to 'Załóż impreze!', new_party_path, class: 'btn btn-dark'
-
+  - if @pagy.pages > 1
+    .row
+      .col-12.center-content
+        = pagy_bootstrap_nav(@pagy).html_safe
 
 
 

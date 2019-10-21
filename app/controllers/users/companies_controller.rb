@@ -3,7 +3,7 @@
 module Users
   class CompaniesController < ProtectedController
     def index
-      @companies = current_user.companies
+      @pagy, @companies = pagy(current_user.companies)
     end
 
     def new

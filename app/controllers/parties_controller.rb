@@ -2,7 +2,7 @@
 
 class PartiesController < ProtectedController
   def index
-    @parties = current_user.parties
+    @pagy, @parties = pagy(current_user.parties)
   end
 
   def new
