@@ -6,13 +6,21 @@ module API
       class Index < Root
         desc 'Returns list of companies'
         params do
-          optional :category_id, type: Integer
+          optional :category_id, type: Array[Integer]
+          optional :party_element_id, type: Integer
+          optional :party_id, type: Integer
           optional :query, type: String
         end
+        paginate
         get do
           search_params = declared(params)
-          companies = SearchCompanyQuery.new.call(Company.all, search_params)
-          ::Companies::SimpleSerializer.new(companies)
+          companies = paginate(
+            SearchCompanyQuery.new.call(
+              Company.includes(:address).all,
+              search_params
+            )
+          )
+          ::Companies::SimpleSerializer.new(companies, include: %i[address])
         end
       end
     end

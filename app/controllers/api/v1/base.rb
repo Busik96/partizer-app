@@ -6,6 +6,7 @@ module API
       version 'v1', using: :path
 
       mount Companies::Base
+      mount Parties::Base
     end
   end
 end
