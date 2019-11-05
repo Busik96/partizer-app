@@ -49,7 +49,7 @@ RSpec.describe PartiesController, type: :controller do
     end
   end
 
-  describe 'POST users/company#create' do
+  describe 'POST users/parties#create' do
     context 'with sign in user' do
       before do
         sign_in user
@@ -60,7 +60,7 @@ RSpec.describe PartiesController, type: :controller do
         {
           party: {
             name: name,
-            start_date: Faker::Date.forward(days: 2),
+            start_date: Faker::Date.backward(days: 14),
             end_date: Faker::Date.forward(days: 22),
             address_attributes: {
               address1: Faker::Address.street_address,
@@ -70,6 +70,7 @@ RSpec.describe PartiesController, type: :controller do
           }
         }
       end
+      let(:last_party) { Party.last }
 
       context 'with valid attributes' do
         let(:name) { Faker::Company.name }
@@ -78,9 +79,9 @@ RSpec.describe PartiesController, type: :controller do
           expect { call }.to change(Party, :count).by(1)
         end
 
-        it 'redirects to parties index' do
+        it 'redirects to party edit' do
           call
-          expect(response).to redirect_to(parties_path)
+          expect(response).to redirect_to(edit_party_path(last_party.id))
         end
       end
 
@@ -96,6 +97,49 @@ RSpec.describe PartiesController, type: :controller do
           expect(response).to render_template(:new)
         end
       end
+    end
+  end
+
+  describe 'GET parties#edit' do
+    it_behaves_like 'only-for-signed-in', :edit, id: 2
+
+    context 'with signed in user' do
+      before do
+        sign_in user
+        get :edit, params: { id: party1.id }
+      end
+
+      it 'renders edit view' do
+        expect(response).to render_template('edit')
+      end
+
+      it 'assigns current party id to @party_id' do
+        expect(assigns(:party_id)).to eq(party1.id.to_s)
+      end
+
+      it 'assigns all categories to @categories' do
+        expect(assigns(:categories).class).to eq(Array)
+      end
+
+      it 'assigns current url to @current_url' do
+        expect(assigns(:current_url)).to eq(edit_party_path(id: party1.id))
+      end
+    end
+  end
+
+  describe 'DELETE parties#destroy' do
+    before do
+      sign_in user
+    end
+    subject(:call) { delete :destroy, params: { id: party1.id } }
+
+    it 'remove party' do
+      expect { call }.to change(Party, :count).by(-1)
+    end
+
+    it 'redirect to parties index' do
+      call
+      expect(response).to redirect_to(parties_path)
     end
   end
 end
