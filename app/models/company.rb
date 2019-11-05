@@ -35,6 +35,17 @@ class Company < ApplicationRecord
             content_type: ['image/png', 'image/jpg', 'image/jpeg'],
             size: { less_than: 7.megabytes }
 
+  def main_photo_url
+    if photos.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(
+        photos.first,
+        only_path: true
+      )
+    else
+      ActionController::Base.helpers.asset_pack_url('media/images/city.png')
+    end
+  end
+
   def owner?(user)
     return false if user.nil?
 
