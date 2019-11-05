@@ -11,6 +11,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  party_template_id :bigint
+#  user_id           :bigint
 #
 # Indexes
 #
@@ -22,9 +23,21 @@
 #
 
 class Party < ApplicationRecord
+  has_one :address, as: :addressable
   belongs_to :party_template, optional: true
   has_many :party_elements
   has_many :party_guests
 
+  accepts_nested_attributes_for :address
+
   validates :name, :start_date, :end_date, presence: true
+  validate :end_date_after_start_date
+
+  private
+
+  def end_date_after_start_date
+    return if end_date >= start_date
+
+    errors.add(:end_date, 'wydarzenia nie może kończyć się wcześniej niż tego samego dnia!')
+  end
 end

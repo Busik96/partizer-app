@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :parties
   resources :companies, only: [:index, :show] do
     scope module: 'company_settings' do
       resource :settings, only: [:show] do

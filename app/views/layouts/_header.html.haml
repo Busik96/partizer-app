@@ -27,8 +27,12 @@
         -else
           %li.nav-item
             = link_to 'Dodaj firmę', new_users_company_path, class: 'nav-link'
-        %li.nav-item
-          = link_to 'Dodaj imprezę', root_path, class: 'nav-link'
+        -if current_user.parties.exists?
+          %li.nav-item
+            = link_to 'Moje imprezy', parties_path, class: 'nav-link'
+        -else
+          %li.nav-item
+            = link_to 'Dodaj imprezę', new_party_path, class: 'nav-link'
         %li.nav-item.dropdown.dropleft.active
           %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: '#', role: 'button'}
             Konto

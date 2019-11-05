@@ -1,0 +1,13 @@
+#page-content
+  .container-fluid
+    .row
+      .col-12.center-content
+        .p-4
+          %h2 Stwórz imprezę
+          = simple_form_for(@party, url: parties_path) do |f|
+            = render 'form', f: f
+            .form-actions
+              = f.button :submit, 'Stwórz imprezę!', class: 'btn btn-large btn-dark'
+            = link_to :back do
+              %i.fas.fa-arrow-left
+              Powrót
