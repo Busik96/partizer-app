@@ -22,15 +22,20 @@
 #  fk_rails_...  (party_template_id => party_templates.id)
 #
 
-
 FactoryBot.define do
   factory :party do
     name { Faker::Company.name }
-    start_date { Faker::Date.forward(days: 2) }
+    start_date { Faker::Date.backward(days: 14) }
     end_date { Faker::Date.forward(days: 23) }
 
     after(:create) do |party|
       create :address, addressable: party
+    end
+
+    trait :complete do
+      after(:create) do |party|
+        create_list :party_element, 2, :with_company, :with_template, party: party
+      end
     end
   end
 end
