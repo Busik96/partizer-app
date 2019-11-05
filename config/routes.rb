@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :parties
+  resources :parties do
+    member do
+      get 'edit/*any', to: 'parties#edit'
+    end
+  end
   resources :companies, only: [:index, :show] do
     scope module: 'company_settings' do
       resource :settings, only: [:show] do

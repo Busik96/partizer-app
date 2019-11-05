@@ -28,19 +28,15 @@
         = ff.input :address2,
           required: false
     .row
-      .col-12.col-md-4
+      .col-12.col-md-6
         = ff.input :city,
           required: true,
           autofocus: true,
           input_html: { autocomplete: 'Miasto' }
-      .col-12.col-md-4
+      .col-12.col-md-6
         = ff.input :zipcode,
           required: true,
           input_html: { autocomplete: 'Kod pocztowy' }
-      .col-12.col-md-4
-        = ff.input :phone_number,
-          required: false,
-          input_html: { autocomplete: 'Numer telefonu' }
     .row
       .col-12
         .text-center.p-3.h5

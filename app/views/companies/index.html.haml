@@ -18,7 +18,7 @@
       - @companies.each do |company|
         .col-md-4.text-center.p-3
           .card{style: 'width: 18rem;'}
-            = image_pack_tag 'city.png', height: 200, alt: 'Tu miało być foto',
+            = image_tag company.main_photo_url, height: 200, alt: 'Tu miało być foto',
               class: 'img.card-img-top'
             .card-body
               %h5.card-title= company.name

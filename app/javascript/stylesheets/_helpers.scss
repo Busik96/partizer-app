@@ -22,15 +22,13 @@
 
 .mapouter {
   position: relative;
-  height: 250px;
-  width: 400px;
+  height: 100%;
 }
 
 .gmap_canvas {
   overflow: hidden;
   background: none !important;
-  height: 250px;
-  width: 400px;
+  height: 100%;
 }
 
 .page-item.active .page-link {

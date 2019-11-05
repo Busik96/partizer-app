@@ -25,7 +25,8 @@
 class Party < ApplicationRecord
   has_one :address, as: :addressable
   belongs_to :party_template, optional: true
-  has_many :party_elements
+  has_many :party_elements, dependent: :destroy
+  has_many :companies, through: :party_elements
   has_many :party_guests
 
   accepts_nested_attributes_for :address
@@ -36,6 +37,7 @@ class Party < ApplicationRecord
   private
 
   def end_date_after_start_date
+    return if start_date.blank? || end_date.blank?
     return if end_date >= start_date
 
     errors.add(:end_date, 'wydarzenia nie może kończyć się wcześniej niż tego samego dnia!')

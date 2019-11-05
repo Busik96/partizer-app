@@ -19,7 +19,8 @@
                 %td= party.start_date
                 %td= party.end_date
                 %td
-                  = link_to 'Edytuj', edit_party_path(@parties), class: 'btn btn-dark'
+                  = link_to 'Edytuj', edit_party_path(party), class: 'btn btn-dark'
+                  = link_to 'Usuń', party_path(party), method: :delete, class: 'btn btn-danger', data: { confirm: 'Czy na pewno?'}
       - else
         .center-page.text-center
           %h3 Nie posiadasz żadnej założonej firmy! Oczywiście możesz to zmienić:

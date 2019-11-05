@@ -31,4 +31,6 @@ class PartyElement < ApplicationRecord
   belongs_to :party
   belongs_to :company, optional: true
   belongs_to :party_template_element, optional: true
+
+  default_scope -> { order(created_at: :asc) }
 end
