@@ -1,0 +1,18 @@
+.DropdownElementList {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 0 0 4px 4px;
+  box-sizing: border-box;
+  display: block;
+  z-index: 1000;
+  position: relative;
+  width: 100%;
+  top: 34px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
