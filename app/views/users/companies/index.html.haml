@@ -26,6 +26,10 @@
         .center-page.text-center
           %h3 Nie posiadasz żadnej założonej firmy! Oczywiście możesz to zmienić:
           =link_to 'Załóż firmę', new_users_company_path, class: 'btn btn-dark'
+  - if @pagy.pages > 1
+    .row
+      .col-12.center-content
+        = pagy_bootstrap_nav(@pagy).html_safe
 
 
 

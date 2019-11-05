@@ -37,4 +37,3 @@ $(document).on('turbolinks:load', () => {
     'locale': 'pl'
   })
 })
-

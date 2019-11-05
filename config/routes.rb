@@ -5,13 +5,20 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  mount API::Root, at: '/'
+  mount GrapeSwaggerRails::Engine, at: '/swagger'
+
   authenticated :user do
     root 'dashboard#index', as: :authenticated_root
   end
 
   root 'home#index'
 
-  resources :parties
+  resources :parties do
+    member do
+      get 'edit/*any', to: 'parties#edit'
+    end
+  end
   resources :companies, only: [:index, :show] do
     scope module: 'company_settings' do
       resource :settings, only: [:show] do

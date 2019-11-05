@@ -39,6 +39,18 @@ RSpec.describe Company, type: :model do
     it { is_expected.to validate_numericality_of(:nip) }
   end
 
+  describe 'main_photo_url' do
+    context 'when photos attached' do
+      let(:company1) { create :company, :with_photos }
+
+      it { expect(company1.main_photo_url).to include('/rails/active_storage/blobs/') }
+    end
+
+    context 'when photos not attached' do
+      it { expect(company1.main_photo_url).to include('/packs-test/media/images/city') }
+    end
+  end
+
   describe 'is owner?' do
     it { expect(company1.owner?(user)).to be true }
   end

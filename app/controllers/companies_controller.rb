@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   before_action :search_pages, only: %i[basics files show_page]
 
   def index
-    @companies = SearchCompanyQuery.new.call(Company.all, search_params)
+    @pagy, @companies = pagy(SearchCompanyQuery.new.call(Company.all, search_params), items: 12)
   end
 
   def show

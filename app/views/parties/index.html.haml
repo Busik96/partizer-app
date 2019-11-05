@@ -3,7 +3,7 @@
     .col-12.pt-5
       - if current_user.parties.exists?
         %h3
-          Moje firmy:
+          Moje imprezy:
           =link_to 'Stwórz impreze!', new_party_path, class: 'btn btn-success float-right'
         %table.table
           %thead.thead-dark
@@ -19,12 +19,16 @@
                 %td= party.start_date
                 %td= party.end_date
                 %td
-                  = link_to 'Edytuj', edit_party_path(@parties), class: 'btn btn-dark'
+                  = link_to 'Edytuj', edit_party_path(party), class: 'btn btn-dark'
+                  = link_to 'Usuń', party_path(party), method: :delete, class: 'btn btn-danger', data: { confirm: 'Czy na pewno?'}
       - else
         .center-page.text-center
           %h3 Nie posiadasz żadnej założonej firmy! Oczywiście możesz to zmienić:
           =link_to 'Załóż impreze!', new_party_path, class: 'btn btn-dark'
-
+  - if @pagy.pages > 1
+    .row
+      .col-12.center-content
+        = pagy_bootstrap_nav(@pagy).html_safe
 
 
 

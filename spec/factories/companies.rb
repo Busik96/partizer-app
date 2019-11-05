@@ -21,9 +21,16 @@ FactoryBot.define do
   factory :company do
     name { Faker::Company.name }
     categories { create_list :category, 1 }
+    nip { Faker::Company.polish_taxpayer_identification_number }
 
     after(:create) do |company|
       create :address, addressable: company
+    end
+
+    trait :with_categories do
+      after(:create) do |company|
+        company.categories = create_list :category, 2
+      end
     end
 
     trait :with_photos do
