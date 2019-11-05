@@ -101,6 +101,7 @@ GEM
     annotate (2.7.5)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 13.0)
+    api-pagination (4.8.2)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     ast (2.4.0)
@@ -127,6 +128,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
@@ -324,6 +326,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    react-rails (2.6.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     require_all (1.5.0)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -442,6 +450,7 @@ DEPENDENCIES
   activeadmin_addons
   activeadmin_json_editor (~> 0.0.7)
   annotate
+  api-pagination
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
@@ -471,6 +480,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0.0)
   rails-controller-testing
+  react-rails
   rspec-rails!
   rubocop
   rubocop-rspec
