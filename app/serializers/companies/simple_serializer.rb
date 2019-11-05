@@ -6,10 +6,9 @@ module Companies
 
     set_type :company
 
-    attributes :name, :nip, :short_description
+    has_one :address, serializer: Addresses::DetailedSerializer
+    has_many :categories
 
-    attribute :main_photo do |company|
-      Rails.application.routes.url_helpers.rails_blob_path(company.photos.first, only_path: true) if company.photos.any?
-    end
+    attributes :name, :nip, :short_description, :main_photo_url
   end
 end

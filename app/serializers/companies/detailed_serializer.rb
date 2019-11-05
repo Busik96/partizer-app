@@ -8,7 +8,7 @@ module Companies
 
     attributes :name, :nip, :short_description
 
-    has_one :address
+    has_one :address, serializer: ::Addresses::DetailedSerializer
     has_many :categories
   end
 end
