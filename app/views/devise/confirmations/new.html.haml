@@ -1,17 +1,18 @@
-%h2 Potwierdzenie konta
+#page-content
+  %h2 Potwierdzenie konta
 
-= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = f.error_notification
-  = f.full_error :confirmation_token
+  = simple_form_for(resource, as: resource_name, url: user_confirmation_path(resource), html: { method: :post }) do |f|
+    = f.error_notification
+    = f.full_error :confirmation_token
 
-  .form-inputs
-    = f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: 'email' }
+    .form-inputs
+      = f.input :email,
+                  required: true,
+                  autofocus: true,
+                  value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                  input_html: { autocomplete: 'email' }
 
-  .form-actions
-    = f.button :submit, 'Wyślij ponownie email z potwierdzeniem'
+    .form-actions
+      = f.button :submit, 'Wyślij ponownie email z potwierdzeniem', class: 'btn btn-large btn-dark'
 
-= render "devise/shared/links"
+  = render "devise/shared/links"

@@ -1,28 +1,18 @@
-%h2
-  Edytuj hasło#{resource_name.to_s.humanize}
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Obecnie czekam na potwierdzenie: #{resource.unconfirmed_email}
-    = f.input :password,
-      hint: 'pozostaw to pole puste, jeśli nie chcesz go zmieniać',
-      required: false,
-      input_html: { autocomplete: 'new-password' }
-
-    = f.input :password_confirmation,
-      required: false,
-      input_html: { autocomplete: 'new-password' }
-
-    = f.input :current_password,
-      hint: 'potrzebujemy twojego aktualnego hasła, aby potwierdzić zmiany',
-      required: true,
-      input_html: { autocomplete: 'current-password' }
-  .form-actions
-    = f.button :submit, 'Zaktualizuj'
-%h3 Anuluj moje konto
-%p
-  Niezadowolony? #{link_to 'Usuń moje konto', registration_path(resource_name), data: { confirm: 'Jesteś pewny/pewna?' }, method: :delete}
-= link_to 'Powrót', :back
+#page-content
+  %h2 Zmień swoje hasło
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .form-inputs
+      .row
+        .col-12.col-md-6
+          = f.hidden_field :reset_password_token
+          = f.input :password,
+            required: true,
+            hint: ("#{@minimum_password_length} znaków minimum" if @minimum_password_length),
+            input_html: { autocomplete: 'new-password' }
+          = f.input :password_confirmation,
+            required: true,
+            input_html: { autocomplete: 'new-password' }
+    .form-actions
+      = f.submit 'Zmień hasło', class: 'btn btn-dark'
+  = render "devise/shared/links"
