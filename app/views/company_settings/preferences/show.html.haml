@@ -1,0 +1,15 @@
+.row
+  .col-12
+    %h3
+      Preferencje:
+    = simple_form_for(@company, url: company_settings_preferences_path(@company)) do |f|
+      .form-inputs
+        = f.input :notify_on_pt_added,
+          required: false,
+          as: :boolean,
+          wrapper: :custom_boolean
+      .form-actions
+        = f.button :submit, 'Zapisz preferencje', class: 'btn btn-large btn-dark'
+      = link_to :back do
+        %i.fas.fa-arrow-left
+        Powrót
