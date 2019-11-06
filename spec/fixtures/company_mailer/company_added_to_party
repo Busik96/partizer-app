@@ -1,0 +1,3 @@
+CompanyMailer#company_added_to_party
+
+Hi, find me in app/views/company_mailer/company_added_to_party
