@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root
   end
 
+  authenticated :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   root 'home#index'
 
   resources :parties do
@@ -23,6 +28,7 @@ Rails.application.routes.draw do
     scope module: 'company_settings' do
       resource :settings, only: [:show] do
         resource :basics
+        resource :preferences
         resources :pages
         resources :photos
         resources :files
@@ -41,4 +47,5 @@ Rails.application.routes.draw do
   end
 
   #get '*page', to: 'home#static_page', as: :static_page
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
