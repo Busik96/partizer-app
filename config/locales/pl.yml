@@ -22,6 +22,7 @@ pl:
     party_template: Szablon imprezy
     end_date: Data końcowa
     start_date: Data rozpoczęcia
+    notify_on_pt_added: Włącz powiadomienie o dodaniu firmy do imprezy
   activerecord:
     errors:
       format: "%{attribute} %{message}"
