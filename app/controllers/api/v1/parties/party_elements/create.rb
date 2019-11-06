@@ -9,7 +9,7 @@ module API
             requires :company_id, type: Integer
           end
           post do
-            element = current_party.party_elements.create!(company_id: params[:company_id])
+            element = PartyServices::CreateElement.new.call(current_party, params[:company_id])
             status 201
             ::PartyElements::SimpleSerializer.new(element)
           end
