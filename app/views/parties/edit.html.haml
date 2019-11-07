@@ -1,3 +1,5 @@
 - content_for :scripts do
   = javascript_pack_tag 'party_editor'
+  :javascript
+    var API_TOKEN="#{@token}";
 = react_component('party_editor/App', party_id: @party_id, current_url: @current_url, categories: @categories)

@@ -5,6 +5,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  api_key                :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
@@ -38,7 +39,17 @@ class User < ApplicationRecord
   # validations
   validates :first_name, :last_name, presence: true
 
+  # callback
+  after_create :generate_api_key
+
   def name
     [first_name, last_name].join(' ')
+  end
+
+  def generate_api_key
+    loop do
+      token = Devise.friendly_token.first(16)
+      break update(api_key: token) unless User.exists?(api_key: token)
+    end
   end
 end

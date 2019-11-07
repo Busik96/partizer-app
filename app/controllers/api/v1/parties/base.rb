@@ -8,7 +8,7 @@ module API
           route_param :id do
             helpers do
               def current_party
-                @current_party ||= Party.includes(
+                @current_party ||= current_user.parties.includes(
                   :party_template,
                   party_elements: {
                     party_template_element: :categories,

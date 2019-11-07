@@ -82,9 +82,9 @@ class App extends React.Component {
   }
 }
 
-const PartyProvider = (props) => (
-  <App partyId={props.party_id} basename={props.current_url} categories={props.categories}/>
-);
+const PartyProvider = (props) => {
+  return (<App partyId={props.party_id} basename={props.current_url} categories={props.categories}/>)
+};
 
 export default PartyProvider;
 
