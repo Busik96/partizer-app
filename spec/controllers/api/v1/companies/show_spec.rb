@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Companies::Show, type: :request do
-  subject(:request) { get url }
+  subject(:request) { get url, headers: headers }
 
   let(:url) { "/api/v1/companies/#{company.id}" }
   let!(:company) { create :company, :with_categories }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   describe 'it returns company details' do
     let(:correct_attributes) do

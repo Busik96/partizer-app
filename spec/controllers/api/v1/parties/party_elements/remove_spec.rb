@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Parties::PartyElements::Remove, type: :request do
-  subject(:request) { delete url }
+  subject(:request) { delete url, headers: headers }
 
   let(:url) { "/api/v1/parties/#{party.id}/party_elements/#{element.id}" }
-  let(:party) { create :party }
+  let(:party) { create :party, user_id: user.id }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   context 'when party element created from party template element' do
     let!(:element) { create :party_element, :with_company, :with_template, party: party }

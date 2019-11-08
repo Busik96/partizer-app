@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Parties::Show, type: :request do
-  subject(:request) { get url }
+  subject(:request) { get url, headers: headers }
 
   let(:url) { "/api/v1/parties/#{party.id}" }
-  let!(:party) { create :party, :complete }
+  let!(:party) { create :party, :complete, user_id: user.id }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   describe 'it returns party details' do
     let(:correct_attributes) do

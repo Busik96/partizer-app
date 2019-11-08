@@ -3,12 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Parties::PartyElements::Update, type: :request do
-  subject(:request) { patch url, params: params }
+  subject(:request) { patch url, params: params, headers: headers }
 
   let(:url) { "/api/v1/parties/#{party.id}/party_elements/#{element.id}" }
-  let(:party) { create :party }
+  let(:party) { create :party, user_id: user.id }
   let!(:element) { create :party_element, :with_company, party: party }
   let!(:company) { create :company }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   describe 'it updates given fields' do
     context 'when status and amount given' do
