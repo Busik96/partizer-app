@@ -41,7 +41,6 @@ class NewPage extends React.Component {
 }
 
 export default (props) => {
-  const { id } = useParams();
   const history = useHistory();
 
   return <NewPage history={history} {...props} />;
