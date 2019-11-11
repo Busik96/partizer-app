@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Label, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
-import ButtonDelete from './../../ButtonDelete/ButtonDelete'
+import { Label, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
 
 class NameElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isDirty: false, currentValue: this.props.currentName || '' };
+    this.state = { isDirty: false, currentValue: '' };
   }
 
   handleSubmit = () => {
@@ -25,33 +24,23 @@ class NameElement extends React.Component {
     }
   };
 
-  handleChangeOnBlur = (event) => {
-    this.handleSubmit();
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.currentName != prevProps.currentName) {
-      this.setState({ isDirty: false, currentValue: this.props.currentName || '' });
-    }
-  }
 
   render() {
     const { currentValue } = this.state;
 
     return (
-      <InputGroup>
-        <Label>Kwota do zapłaty:</Label>
+       <InputGroup>
+        <InputGroupAddon addonType="prepend">
+          Dodaj swojego gościa:
+        </InputGroupAddon>
         <Input
-          placeholder='Wpisz gościa'
+          placeholder='Wpisz imię i nazwisko...'
           onKeyPress={this.handleChangeByKey}
-          onBlur={this.handleChangeOnBlur}
           value={currentValue}
           onChange={this.changeValue}
         />
-        <InputGroupAddon addonType='append'>
-          <InputGroupText>
-
-          </InputGroupText>
+        <InputGroupAddon addonType="append">
+          <Button color="success" onClick={this.handleSubmit}>Dodaj</Button>
         </InputGroupAddon>
       </InputGroup>
     );

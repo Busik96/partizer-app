@@ -10,9 +10,10 @@ import {
 } from "react-router-dom";
 import isEmpty from 'lodash/isEmpty';
 import Sidebar from './components/Sidebar/Sidebar';
-import PartyElements from './components/PartyElements/PartyElements';
+import PartyElements from './components/Sidebar/PartyElements/PartyElements';
 import EditPage from './containers/EditPage';
 import NewPage from './containers/NewPage';
+import PartyGuestsPage from './containers/PartyGuestsPage';
 import SummaryPage from './containers/SummaryPage';
 import { getPartyDetails } from './api/actions';
 import LoadingElement from './components/LoadingElement/LoadingElement';
@@ -54,21 +55,27 @@ class App extends React.Component {
       <Router basename={basename}>
         <Container fluid>
           <Row>
-            <Col xs="12" sm="3" className="bg-dark">
+            <Col xs="12" md="3" className="bg-dark">
               <Sidebar
                 partyName={party.name}
                 templateName={party.party_template ? party.party_template.name : null}
               >
-                {isLoading ? <LoadingElement/> : <PartyElements elements={party.party_elements}/>}
+                {isLoading ?
+                  <LoadingElement/> :
+                  <PartyElements elements={party.party_elements}/>
+                }
               </Sidebar>
             </Col>
-            <Col xs="12" sm="9" id="page-content">
+            <Col xs="12" md="9" id="page-content">
               <Switch>
                 <Route exact path="/">
                   <SummaryPage party={party} loadParty={this.loadParty}/>
                 </Route>
                 <Route path="/new">
                   <NewPage party={party} loadParty={this.loadParty} categories={categories}/>
+                </Route>
+                <Route path="/guests">
+                  <PartyGuestsPage party={party}/>
                 </Route>
                 <Route path="/:id">
                   <EditPage party={party} loadParty={this.loadParty}/>
