@@ -22,6 +22,7 @@ pl:
     party_template: Szablon imprezy
     end_date: Data końcowa
     start_date: Data rozpoczęcia
+    notify_on_pt_added: Włącz powiadomienie o dodaniu firmy do imprezy
   activerecord:
     errors:
       format: "%{attribute} %{message}"
@@ -306,7 +307,7 @@ pl:
       no_token: "Dostęp do tej strony jest możliwy jedynie poprzez użycie prawidłowego adresu z emaila z instrukcjami o resecie hasłą. Jeżeli właśnie skorzystałeś z tego adresu, sprawdź czy użyty adres jest zgodny z tym w emailu."
       send_instructions: "Za chwilę otrzymasz emaila z instrukcją jak zresetować hasło."
       send_paranoid_instructions: "Jeżeli Twój adres istnieje w naszej bazie, otrzymasz za chwilę emaila z instrukcją zmiany hasła."
-      updated: "Twoje hasło zostało zmienione. Zostałeś pomyślnie zalogowany."
+      updated: "Twoje hasło zostało zmienione. Możesz sie zalogować."
       updated_not_active: "Twoje hasło zostało zmienione."
     registrations:
       destroyed: "Do widzenia! Twoje konto zostało usunięte."

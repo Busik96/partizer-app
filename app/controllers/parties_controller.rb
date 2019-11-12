@@ -14,6 +14,7 @@ class PartiesController < ProtectedController
     @party_id = params[:id]
     @current_url = edit_party_path(id: @party_id)
     @categories = Category.all.map { |cat| { id: cat.id, value: cat.name } }
+    @token = current_user.api_key
   end
 
   def create

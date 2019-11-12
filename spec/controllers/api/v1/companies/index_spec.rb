@@ -3,12 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Companies::Index, type: :request do
-  subject(:request) { get url, params: params }
+  subject(:request) { get url, params: params, headers: headers }
 
   let(:url) { '/api/v1/companies' }
   let(:params) { {} }
   let!(:companies) { create_list :company, 2, :with_categories }
   let(:company_ids) { json_response_body['data'].map { |el| el['id'].to_i } }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   it 'returns list of companies' do
     request

@@ -4,13 +4,14 @@
 #
 # Table name: companies
 #
-#  id                :bigint           not null, primary key
-#  name              :string
-#  nip               :string
-#  short_description :text
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  user_id           :bigint
+#  id                 :bigint           not null, primary key
+#  name               :string
+#  nip                :string
+#  notify_on_pt_added :boolean          default(FALSE)
+#  short_description  :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint
 #
 # Indexes
 #

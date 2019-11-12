@@ -5,6 +5,7 @@
 # Table name: party_guests
 #
 #  id         :bigint           not null, primary key
+#  confirmed  :boolean          default(FALSE)
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

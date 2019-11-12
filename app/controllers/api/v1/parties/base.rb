@@ -8,8 +8,9 @@ module API
           route_param :id do
             helpers do
               def current_party
-                @current_party ||= Party.includes(
+                @current_party ||= current_user.parties.includes(
                   :party_template,
+                  :party_guests,
                   party_elements: {
                     party_template_element: :categories,
                     company: %i[address categories photos_attachments photos_blobs]
@@ -18,6 +19,7 @@ module API
               end
             end
 
+            mount PartyGuests::Base
             mount Parties::Show
             mount PartyElements::Base
           end

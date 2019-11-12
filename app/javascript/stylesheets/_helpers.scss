@@ -35,3 +35,7 @@
   background-color: #484848;
   border-color: #484848;
 }
+
+.custom-control-input.is-valid ~ .custom-control-label {
+  color: black;
+}

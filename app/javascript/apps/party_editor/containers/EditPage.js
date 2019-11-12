@@ -63,6 +63,7 @@ class EditPage extends React.Component {
               <Col xs='12' md='2'>
                 <ButtonDelete
                   onClick={this.deleteElement}
+                  className='center-content'
                 />
               </Col>
             </React.Fragment>

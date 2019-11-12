@@ -3,11 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Parties::PartyElements::Create, type: :request do
-  subject(:request) { post url, params: params }
+  subject(:request) { post url, params: params, headers: headers }
 
   let(:url) { "/api/v1/parties/#{party.id}/party_elements" }
   let(:params) { {} }
-  let(:party) { create :party }
+  let(:party) { create :party, user_id: user.id }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   context 'when params empty' do
     it 'returns 401' do

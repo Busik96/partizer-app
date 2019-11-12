@@ -27,7 +27,6 @@
 #  fk_rails_...  (party_template_element_id => party_template_elements.id)
 #
 
-
 FactoryBot.define do
   factory :party_element do
     amount { Faker::Number.number(digits: 5) }

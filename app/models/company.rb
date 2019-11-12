@@ -4,14 +4,14 @@
 #
 # Table name: companies
 #
-#  id                :bigint           not null, primary key
-#  name              :string
-#  nip               :string
-#  short_description :text
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  user_id           :bigint
-#
+#  id                 :bigint           not null, primary key
+#  name               :string
+#  nip                :string
+#  notify_on_pt_added :boolean          default(FALSE)
+#  short_description  :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint
 #
 # Indexes
 #
@@ -24,6 +24,7 @@ class Company < ApplicationRecord
   has_many :categories, through: :company_categories
   has_many :company_pages, dependent: :destroy
   has_many :company_files, dependent: :destroy
+  belongs_to :user
   has_many_attached :photos
 
   accepts_nested_attributes_for :address

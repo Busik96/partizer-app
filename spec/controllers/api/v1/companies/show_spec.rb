@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::Companies::Show, type: :request do
-  subject(:request) { get url }
+  subject(:request) { get url, headers: headers }
 
   let(:url) { "/api/v1/companies/#{company.id}" }
-  let!(:company) { create :company }
+  let!(:company) { create :company, :with_categories }
+  let(:user) { create :user }
+  let(:headers) { { 'Authorization' => user.api_key } }
 
   describe 'it returns company details' do
     let(:correct_attributes) do
@@ -23,11 +25,16 @@ RSpec.describe API::V1::Companies::Show, type: :request do
       expect(json_response_body['data']['attributes']).to eq(correct_attributes)
     end
 
-    it 'returns associated data correctly' do
+    it 'returns associated objects correctly' do
       request
       expect(associated_objects).to include(
         'address'
       )
+    end
+
+    it 'returns categories details correctly' do
+      request
+      expect(json_response_body['data']['relationships']['categories'])
     end
 
     it 'returns code 200' do

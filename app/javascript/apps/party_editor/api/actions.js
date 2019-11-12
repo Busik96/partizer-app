@@ -6,6 +6,10 @@ export const getPartyDetails = (partyId) => {
   return api.get(`/parties/${partyId}`);
 }
 
+export const getPartyGuestsDetails = (partyId) => {
+  return api.get(`/parties/${partyId}/party_guests`);
+}
+
 export const setPartyElementStatus = (partyId, elementId, status) => {
   return api.patch(`/parties/${partyId}/party_elements/${elementId}`, { status });
 };
@@ -24,11 +28,27 @@ export const setCompanyId = (partyId, elementId, companyId) => {
 
 export const deletePartyElement = (partyId, elementId) => {
   return api.delete(`/parties/${partyId}/party_elements/${elementId}`);
-}
+};
 
 export const createPartyElement = (partyId, companyId) => {
   return api.post(`/parties/${partyId}/party_elements`, { company_id: companyId });
-}
+};
+
+export const setPartyGuestName = (partyId, guestId, name) => {
+  return api.patch(`/parties/${partyId}/party_guests/${guestId}`, { name });
+};
+
+export const setPartyGuestConfirmed = (partyId, guestId, confirmed) => {
+  return api.patch(`/parties/${partyId}/party_guests/${guestId}`, { confirmed });
+};
+
+export const deletePartyGuest = (partyId, guestId) => {
+  return api.delete(`/parties/${partyId}/party_guests/${guestId}`);
+};
+
+export const createPartyGuest = (partyId, name) => {
+  return api.post(`/parties/${partyId}/party_guests`, { name });
+};
 
 export const getCompanies = (categoryId = null, query = null, elementId = null, page = 1, partyId = null) => {
   return api.get(
