@@ -5,6 +5,8 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter '/app/admin'
   add_filter '/app/channels'
+  add_filter '/app/controllers/registrations_controller.rb'
+  add_filter 'app/inputs/rich_text_area_input.rb'
 end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -72,6 +74,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ApiHelpers, type: :request
+
 
   config.before(:suite) do
     FactoryBot.find_definitions
