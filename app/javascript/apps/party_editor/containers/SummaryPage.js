@@ -4,11 +4,35 @@ import { useParams, useHistory } from 'react-router-dom';
 import GoogleMapsElement from './../components/GoogleMapsElement/GoogleMapsElement'
 import NotesElement from './../components/NotesElement/NotesElement'
 import SummaryElement from './SummaryElement'
+import { getPartyGuestsDetails } from './../api/actions';
+import Jsona from 'jsona';
+import SimplePartyGuestsList from './../components/PartyGuests/SimplePartyGuestsList/SimplePartyGuestsList'
 
 class SummaryPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { guests: [], isLoading: false };
+  }
+
+  componentDidMount() {
+    this.loadPartyGuests();
+  }
+
+  loadPartyGuests = (callback = null) => {
+    this.setState({ isLoading: true });
+    getPartyGuestsDetails(this.props.party.id).then((response) => {
+      const jsona = new Jsona();
+      this.setState({ guests: jsona.deserialize(response.data) }, callback);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => this.setState({ isLoading: false }));
+    };
 
   render(){
     const { party, elements } = this.props;
+    const { guests } = this.state;
 
     return (
       <React.Fragment>
@@ -45,6 +69,16 @@ class SummaryPage extends React.Component {
               <hr/>
             </Col>)
           }
+        </Row>
+        <Row>
+          <Col xs='12' mr-5 ml-5>
+            <h5 className="p-4 text-center">Lista gości:</h5>
+            <SimplePartyGuestsList
+              guests={guests}
+              loadPartyGuests={this.loadPartyGuests}
+              partyId={this.props.party.id}
+            />
+          </Col>
         </Row>
       </React.Fragment>
     );
